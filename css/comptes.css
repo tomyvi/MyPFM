@@ -1,0 +1,576 @@
+.attente_container{
+	width: 100%;
+	background-color: #92CCF9;
+	box-shadow: 1px 2px 8px #999 inset;
+	border: solid 2.5px #E4E4E4;
+	border-radius: 7px;
+	font-size: 150%;
+	font-weight: bold;
+	font-style: italic;
+	color: white;
+	text-shadow: 1px 2px 8px #999;
+	height: 150px;
+	text-align: center;
+	padding-top: 100px;
+}
+
+.attente_container #loading_progress {
+	text-align: center;
+	height: 15px;
+	width: 150px;
+	margin-left: 450px;
+	margin-top: 25px;
+}
+
+.comtes_container{
+	display:none;
+}
+.floatright {
+    text-align:right;
+ }
+   
+
+.credit{
+	color:#0C0;
+}
+.signe:before{
+	content: "+";
+}
+.debit{
+	color:#F00;
+}
+td.solde{
+	color:#BBB;
+	font-style:italic;
+}
+.colonne_1 {
+	width: 160px;
+	display: table-cell;
+	vertical-align: top;
+	padding: 5px;
+	padding-top:0px;
+}
+
+.colonne_2 {
+	display: table-cell;
+	vertical-align: top;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 850px;
+}
+.liste_comptes {
+	border:solid 2.5px #E4E4E4;
+	border-radius: 8px;
+	background-color:#EEE;
+	cursor:pointer;
+	width:145px;
+	max-height: 500px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	box-shadow: 1px 2px 8px #999;
+	
+}
+.liste_comptes .compte{
+	list-style: none;
+	width:140px;
+	padding-left:5px;	
+	display:block;
+	background-color:#EEE;
+	border-bottom:solid 1px #DDD;
+}
+.liste_comptes .compte:first-child{
+	border-top-right-radius: 6px;
+	border-top-left-radius: 6px;
+}
+.liste_comptes .compte:last-child{
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+}
+.liste_comptes .compte:hover{
+	
+	background-color:#DDD;
+	box-shadow: 0px 0.5px 6px #999 inset;
+}
+.liste_comptes .actif{
+	background-color:#92CCF9;
+	box-shadow: 1px 2px 8px #999 inset;
+	
+}
+.liste_comptes .lib_compte{
+	font-weight:bold;
+	overflow: hidden;
+	white-space:nowrap;
+	text-overflow: ellipsis;
+	max-width:140px;
+
+}
+.liste_comptes .compte:hover .lib_compte{
+	text-shadow: 0px 1.5px 6px #999;
+}
+.liste_comptes .actif .lib_compte{
+	color:white;
+	text-shadow: 1px 2px 8px #999;
+}
+.liste_comptes .sstitre_compte{
+	width:160px;
+}
+.liste_comptes .type_compte{
+	display:table-cell;
+	font-style:italic;
+	font-size:75%;
+	width:80px;
+	max-width:80px;
+	overflow: hidden;
+	white-space:nowrap;
+	text-overflow: ellipsis;
+}
+.liste_comptes .solde_compte{
+	display:table-cell;
+	font-style:italic;
+	font-size:75%;
+	width:80px;	
+	white-space:nowrap;
+}
+
+.lien_afficher_cpt_clos{
+	text-align:center;
+	margin-top:10px;
+	font-size:75%;
+	color:grey;
+}
+
+.entete_compte{
+	width: 850px;
+	background-color:#92CCF9;
+	box-shadow: 1px 2px 8px #999 inset;
+	padding-left:5px;
+	border-left:solid 2.5px #E4E4E4;
+	border-right:solid 2.5px #E4E4E4;
+	border-top:solid 2.5px #E4E4E4;
+	
+	border-top-right-radius: 7px;
+	border-top-left-radius: 7px;
+	
+}
+.entete_compte .credit{
+	color:#0B0;
+}
+.titre_compte{
+	display:table-cell;
+	width:425px;
+	font-size:150%;
+	font-weight:bold;
+	font-style:italic;
+	color:white;
+	text-shadow: 1px 2px 8px #999;
+	
+}
+
+.sstitre_compte{
+	
+	display:table-cell;
+	width:425px;
+	color:#999;
+}
+
+#lien_undo_import{
+	color:red;
+	font-weight:bold;
+}
+
+#overlay {
+    position: absolute;
+	z-index: 90;
+	height:505px;
+}
+
+#overlay_block{
+	background: white;
+	z-index: 91;
+	opacity: 0.75;
+	height:505px;
+	border-bottom-right-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+
+#overlay_texte{
+	position: absolute;
+	z-index: 92;
+	top: 100px;
+	width: 100%;
+	font-size: 200%;
+	font-weight: bold;
+	text-align: center;
+	font-style: italic;
+	color: #92CCF9;
+	text-shadow: 0px 0px 20px #999;
+}
+
+table.entete_liste_transactions {
+	width:100%;
+	border-collapse: collapse;
+	border-left:solid 2.5px #E4E4E4;
+	border-right:solid 2.5px #E4E4E4;
+	
+}
+th{
+	text-align:center;
+	font-size:85%;
+	background-image: url(data:image/jpeg;base64,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);
+}
+
+div.liste_transactions{
+	max-height:505px;
+	overflow:hidden;
+	
+	border-left:solid 2.5px #E4E4E4;
+	border-right:solid 2.5px #E4E4E4;
+	border-bottom:solid 2.5px #E4E4E4;
+	
+	border-bottom-right-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+
+
+table.liste_transactions {
+	width:100%;
+	border-collapse: collapse;
+	
+}
+.liste_transactions  .credit {
+	font-weight:bold;
+}
+
+
+.liste_transactions tbody tr{
+	border-bottom:solid 1px #E4E4E4;
+	background: #F9F9F9;
+}
+.liste_transactions tbody tr:hover, .liste_transactions tbody tr:nth-child(odd):hover{
+	border-bottom:solid 1px #E4E4E4;
+	background: #E4E4E4;
+}
+.liste_transactions tbody tr:nth-child(odd){
+	background: #F0F0F0;
+}
+.liste_transactions tbody td{
+	overflow: hidden;
+	white-space:nowrap;
+	text-overflow: ellipsis;
+	margin:0px;
+}
+.entete_liste_transactions th.date{
+	width: 75px;
+}
+.liste_transactions td.date{
+	width: 75px;
+	text-align:center;
+}
+.liste_transactions td.edit_transac, .entete_liste_transactions th.edit_transac{
+	width: 16px;
+}
+
+.liste_transactions img.edit_transac_icon{
+	
+}
+
+.liste_transactions td.libelle, .entete_liste_transactions th.libelle{
+	max-width: 400px;
+}
+
+.entete_liste_transactions th.categorie{
+	width:125px;
+}
+.liste_transactions td.categorie{
+	width:125px;
+	max-width: 125px;
+	cursor:hand;
+}
+.liste_transactions td.montant, .liste_transactions td.solde{
+	text-align:right;
+}
+
+tbody tr.highlight{
+	background:#92CCF9;
+}
+
+
+.dialog{
+	display:none;
+}
+
+.diag_ligne{
+	width:420px;
+	white-space:nowrap;
+}
+
+.diag_libelle{
+	display:table-cell;
+	width:95px;
+	white-space:nowrap;
+}
+
+.diag_champ{
+	display:table-cell;
+	white-space:nowrap;
+}
+
+.balances{
+	border-top:solid 1px #ddd;
+	border-bottom:solid 1px #ddd;
+	margin-top:15px;
+	margin-bottom:15px;
+	width:145px;
+}
+
+.liste_cats{
+	
+	
+	
+}
+.liste_cat{
+	list-style: none;
+	width:160px;
+	max-width:160px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	float: left;
+	white-space:nowrap;
+	text-align:center;
+	border-radius: 3px;
+	
+}
+.liste_cat:hover{
+	background-color:#8F6CD7;
+	color:white;
+}
+.cat_selected{
+	background-color:#650262;
+	color:white;
+	font-weight:bold;
+}
+.nowrap{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space:nowrap;
+}
+.loading_spin{
+	clear:both;
+}
+
+.graph_menu{
+	border:solid 2.5px #F77;
+	border-radius: 8px;
+	background-color:#EEE;	
+	padding-left:10px;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.graph_menu .titre {
+	font-weight:bold;
+}
+
+.graph_menu .type_graph{
+	padding-left:15px;
+}
+.graph_menu .type_graph:before{
+	content: "> ";
+}
+
+.graph_epargne_container{
+	z-index: 0;
+	list-style: none;
+	width:814px;
+	border:solid 2.5px #F77;
+	background-color:#EEE;
+	border-radius: 8px;
+	margin-top:0px;
+	margin-bottom:10px;
+	margin-left:5px;
+	margin-right:5px;
+	padding:5px;
+}
+
+.graph_epargne_container .graph_epargne{
+	display:table-cell;
+	width:710px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	background-color:#FFF;
+}
+.graph_epargne_container .graph_epargne_montant{
+	display:table-cell;
+	width:100px;
+	font-weight:bold;
+	font-size:120%;
+	white-space:nowrap;
+	vertical-align:middle;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	background-color:#FFF;
+	
+}
+.graph_epargne_container .graph_epargne_montant .montant{
+    vertical-align:middle;
+	margin-top:45px;
+	margin-bottom:35px;
+	text-align:right;
+	padding-right:5px;
+    
+}
+
+
+.liste_graph_cpt{
+	
+}
+.liste_graph_cpt .graph_solde{
+	z-index: 0;
+	list-style: none;
+	float: left;	
+	width:395px;
+	border:solid 2.5px #F77;
+	border-radius: 8px;
+	background-color:#EEE;
+	margin-top:0px;
+	margin-bottom:10px;
+	margin-left:5px;
+	margin-right:5px;
+	padding:5px;
+}
+.liste_graph_cpt .titre_graph{
+	display:table-cell;
+	text-align:center;
+	margin-bottom:5px;
+	width:385px;
+	font-weight: bold;
+}
+.liste_graph_cpt .update_cpt_graph{
+	width:12px;
+	height:12px;
+	float:right;
+	background-image:url('./../img/refresh-update.png');
+	cursor: pointer;
+}
+.liste_graph_cpt .titre_graph .titre_cpt{
+	display:table-cell;
+	font-weight:bold;
+	width:190px;
+	
+}
+
+.liste_graph_cpt .graph_cpt_solde{
+	
+	width:390px;
+	height:150px;
+	
+}
+.liste_graph_cpt .graph_cpt_flux{
+	
+	width:390px;
+	height:100px;
+	
+}
+.liste_graph_cpt .solde_fin_mois{
+	text-align:center;
+	margin-top:5px;
+}
+
+
+.info_transac_popup{
+	font-size:80%;
+}
+
+
+/* ################################## REPORTING BUDGET #####################" */
+
+.reporting-budget-header{
+	
+	text-align:right;
+	margin-bottom:20px;
+	
+}
+
+.reporting-budget-graphcontainer{
+	
+
+}
+.reporting-budget-graphcontainer .graph_budget{
+	z-index: 0;
+	list-style: none;
+	float: left;	
+	width:319px;
+	border:solid 2.5px #F77;
+	border-radius: 8px;
+	background-color:#EEE;
+	margin-top:0px;
+	margin-bottom:10px;
+	margin-left:5px;
+	margin-right:5px;
+	padding:5px;
+}
+
+.reporting-budget-graphcontainer .reporting-budget-graphbar{
+	width:319px;
+}
+.reporting-budget-graphcontainer .reporting-budget-transactions{
+	float:right;
+	height:355px;
+	max-height:360px;
+	width:680px;
+	background-color:white;
+	border-radius: 8px;
+	border:solid 2.5px #E4E4E4;
+	
+}
+
+.reporting-budget-graphcontainer .reporting-budget-transactions div {
+	width:100%;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+
+.reporting-budget-graphcontainer .reporting-budget-transactions div table{
+	width:100%;
+}
+
+.reporting-budget-graphcontainer .reporting-budget-graphdepenses{
+	margin-top:10px;
+}
+
+.reporting-budget-showmore{
+	width:100%;
+	text-align:right;
+}
+
+/* ################################## REPORTING CATEGORIE #####################" */
+
+.reporting-categorie-graphcontainer{
+	
+}
+.reporting-categorie-graphcontainer .graph_categorie{
+	z-index: 0;
+	list-style: none;
+	float: left;	
+	width:319px;
+	border:solid 2.5px #F77;
+	border-radius: 8px;
+	background-color:#EEE;
+	margin-top:0px;
+	margin-bottom:10px;
+	margin-left:5px;
+	margin-right:5px;
+	padding:5px;
+}
+
+/* ################################## DIALOG HANDLE DUPLICATES #####################" */
+
+.handle_duplicates_duplicates{
+	margin-bottom:50px;
+	height:260px;
+}
+
+.handle_duplicates_transactions{
+	height:260px;
+}
+
