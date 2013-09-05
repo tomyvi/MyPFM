@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<title>Mes Comptes</title>
+<title><?php echo _("My Personal Finance Manager"); ?></title>
 <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
 <link rel="stylesheet" type="text/css" href="./css/commun.css" />
 <link rel="stylesheet" type="text/css" href="./css/comptes.css" />
@@ -32,47 +32,47 @@
 
 <?php if(User::is_user_logged_in() == 1){ ?>
 	<ul id='nav'>
-	<li id='menu_accueil'><a href="./">Accueil</a></li>
+	<li id='menu_accueil'><a href="./"><?php echo _("Home"); ?></a></li>
 	
 		<li id='menu_synthese'>
-			<a href="./afficher_synthese.php">Synth&egrave;se</a>
+			<a href="./dashboard.php"><?php echo _("Dashboard"); ?></a>
 		</li>
 		<li id='menu_comptes'>
-			<a href="./afficher_compte.php">D&eacute;penses & Revenus</a>
+			<a href="./display.php"><?php echo _("Expenses & Incomes"); ?></a>
 			<ul>
-				<li><a href="./afficher_compte.php">Liste des comptes</a></li>
-				<li><a href="javascript:void(0);" id="lien_add_cpt">Ajouter un compte</a></li>
+				<li><a href="./display.php"><?php echo _("Account list"); ?></a></li>
+				<li><a href="javascript:void(0);" id="lien_add_cpt"><?php echo _("Add new account"); ?></a></li>
 				<?php 
 				if ($_AFFICHER_COMPTE) {
-					?><li><a href="javascript:void(0);" id="lien_add_transac">Ajouter une transaction</a></li><?php
+					?><li><a href="javascript:void(0);" id="lien_add_transac"><?php echo _("Add new transaction"); ?></a></li><?php
 				}
 				?>
 				
 			</ul>
 		</li>
 		<li id='menu_categories'>
-			<a href="javascript:void(0);">Catégories & Budgets</a>
+			<a href="javascript:void(0);"><?php echo _("Categories & Budgets"); ?></a>
 			<ul>
-				<li><a href="javascript:void(0);" id='lien_add_budget'>Créer un nouveau budget</a></li>
-				<li><a href="javascript:void(0);">Ajouter une cat&eacute;gorie</a></li>
+				<li><a href="javascript:void(0);" id='lien_add_budget'><?php echo _("Add new budget"); ?></a></li>
+				<li><a href="javascript:void(0);"><?php echo _("Add new category"); ?></a></li>
 				<?php 
 				if ($_AFFICHER_COMPTE) {
-					?><li><a href="javascript:void(0);">Appliquer les cat&eacute;gories</a></li><?php
+					?><li><a href="javascript:void(0);"><?php echo _("Apply categories"); ?></a></li><?php
 				}
 				?>				
 			</ul>
 		</li> 
 		<li id='menu_etats'>
-			<a href="./rapporter_graphique.php">Rapports</a>
+			<a href="./report_graphs.php"><?php echo _("Reports"); ?></a>
 			<ul>
-				<li><a href="./rapporter_graphiques.php">Dépenses & revenus</a></li>
-				<li><a href="./rapporter_categories.php">Catégories</a></li>
-				<li><a href="./rapporter_budgets.php">Budgets</a></li>
+				<li><a href="./report_graphs.php"><?php echo _("Expenses & Incomes"); ?></a></li>
+				<li><a href="./report_categories.php"><?php echo _("Categories"); ?></a></li>
+				<li><a href="./report_budgets.php"><?php echo _("Budgets"); ?></a></li>
 			</ul>
 		</li>		
-		<li><a href="./login.php?out">D&eacute;connexion</a></li>
+		<li><a href="./login.php?out"><?php echo _("Logout"); ?></a></li>
 		<li id='menu_search' class='menu_search'>
-			<input placeholder='Montant, cat&eacute;gorie ou libell&eacute;' type='text' name='q' id='q' value='<?php echo addslashes($_GET['q']); ?>' size='30' tabindex='1' onfocus='this.select();' autocomplete='off'/>
+			<input placeholder='<?php echo _("Amount, category or label,..."); ?>' type='text' name='q' id='q' value='<?php echo addslashes($_GET['q']); ?>' size='30' tabindex='1' onfocus='this.select();' autocomplete='off'/>
 			<img src='./img/06_magnifying_glass.png' height='12' width='12' onclick='do_search();'></li>
 	</ul>
 <?php } ?>

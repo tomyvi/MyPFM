@@ -91,15 +91,13 @@
 			width: screen.width-150,
 			modal: true,
 			buttons: {
-				"Ajouter": function() {
+				"<?php echo _("Add"); ?>": function() {
 					var nb_error = 0;
 					$('#table_duplicates_duplicates').find('input[type=checkbox]').each(function(){
-						console.log("Nouvelle checkbox, cochée ? " + this.checked);
-						//ajout des lignes cochées
+						
+						//adding checked lines
 						if(this.checked){
-							console.log("Validation ajout => ");
 							duplicate_tr = $(this).parent().parent();
-							console.log(duplicate_tr);
 							
 							var t_id_transac = 'NEWID_' + Math.floor(Math.random() * 11113);
 							id_compte = duplicate_tr.data('id_compte');
@@ -135,10 +133,10 @@
 												layout: 'top',
 												type: 'warning',
 												timeout: 10000,
-												text: nb_error + ' à l\'ajout des transactions (Dernier msg : '+ data.error +') !'
+												text: nb_error + ' <?php echo _("error(s) when adding transactions"). ?> (<?php echo _("Last error message"); ?> : '+ data.error +') !'
 											});
 										}else{
-											noty_ko.setText(nb_error + ' à l\'ajout des transactions (Dernier msg : '+ data.error +') !');
+											noty_ko.setText(nb_error + ' <?php echo _("error(s) when adding transactions"). ?> (<?php echo _("Last error message"); ?> : '+ data.error +') !');
 										}
 									}					
 								}
@@ -155,7 +153,7 @@
 					
 					$('#dialog-handle-duplicate').dialog("close");
 				},
-				"Fermer": function(){
+				"<?php echo _("Close"); ?>": function(){
 					$('#dialog-handle-duplicate').dialog("close");
 				}
 			}
@@ -164,20 +162,20 @@
 		
 	});
 </script>
-<div id="dialog-handle-duplicate" class="dialog" title="Gestion des transactions existantes">
+<div id="dialog-handle-duplicate" class="dialog" title="<?php echo _("Duplicate transaction handler"); ?>">
 	<div class='handle_duplicates_duplicates'>
-	<h3>Liste des transactions à importer :</h3>(survolez une ligne avec votre souris pour identifier la transaction existante correspondante).<br/>	
-	Veuillez cocher les lignes à importer :
+	<h3><?php echo _("List of transactions to be imported"); ?> :</h3>(<?php echo _("Mouse over a line to identify the corresponding existing transaction"); ?>).<br/>	
+	<?php echo _("Please check transaction to import"); ?> :
 	<form>
 		<table class="liste_transactions table_header" id="table_duplicates_duplicates_head">
 			<thead>
 				<tr>
 					<th></th>
-					<th class="date">Date</th>
+					<th class="date"><?php echo _("Date"); ?></th>
 					<th class="edit_transac"></th>
-					<th class="libelle">Libellé</th>
-					<th class="categorie">Catégorie</th>
-					<th class="montant">Montant</th>
+					<th class="libelle"><?php echo _("Label"); ?></th>
+					<th class="categorie"><?php echo _("Category"); ?></th>
+					<th class="montant"><?php echo _("Amount"); ?></th>
 				</tr>
 			</thead>
 		</table>
@@ -188,16 +186,16 @@
 		</div>
 	</form></div>
 	<div class='handle_duplicates_transactions'>
-		<h3>Liste des transactions existantes :</h3>
+		<h3><?php echo _("Existing transactions list"); ?> :</h3>
 		<table class="liste_transactions table_header" id="table_duplicates_transactions_head">
 			<thead>
 				<tr>
 					<th></th>
-					<th class="date">Date</th>
+					<th class="date"><?php echo _("Date"); ?></th>
 					<th class="edit_transac"></th>
-					<th class="libelle">Libellé</th>
-					<th class="categorie">Catégorie</th>
-					<th class="montant">Montant</th>
+					<th class="libelle"><?php echo _("Label"); ?></th>
+					<th class="categorie"><?php echo _("Category"); ?></th>
+					<th class="montant"><?php echo _("Amount"); ?></th>
 				</tr>
 			</thead>
 		</table>

@@ -69,12 +69,11 @@
 				context: $(this),
 				success: function(data) {
 					if(data.status){
-						console.log("MAJ DB categorie OK");
 						notif = noty({
 							layout: 'top',
 							type: 'success',
 							timeout: 3000,
-							text: 'Catégorie mise à jour !'
+							text: '<?php echo _("Transaction category updated"); ?> !'
 						});						
 					}else{						
 						$('#' + transac_id).find('.categorie').html(old_html);
@@ -100,7 +99,7 @@
 						layout: 'top',
 						type: 'error',
 						timeout: 3000,
-						text: 'Impossible de mettre à jour la catégorie !'
+						text: '<?php echo _("Impossible to update transaction category"); ?> !'
 					});
 				}
 			});
@@ -116,11 +115,11 @@
 						if(data != "" && data !="ERREUR"){
 							
 						}else{
-							alert('Erreur lors de la mise à jour !!');
+							alert('<?php echo _("Error while updating category sort order"); ?> !!');
 						}
 					},
 					error: function(){
-						alert('Erreur lors de demande de mise à jour !!');
+						alert('<?php echo _("Error while updating category sort order"); ?> !!');
 					}
 				});
 			}
@@ -129,7 +128,7 @@
 	});
 </script>
 
-<div id="dialog-update-cat" title="Editer la cat&eacute;gorie" class="dialog">
+<div id="dialog-update-cat" title="<?php echo _("Select new category"); ?>" class="dialog">
 	<input type="hidden" name="id_transac" id="update_id_transac" />
 	<ul class="liste_cats">
 		<?php 

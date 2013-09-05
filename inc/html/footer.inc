@@ -18,9 +18,9 @@
 					click_reset: true,
 					redirect_url:'./login.php?out&auto&dest=' + location.pathname + location.hash,
 					logout_url: false,
-					dialogTitle: 'Déconnexion automatique',
-					  dialogText: 'Suite à 30 minutes d\'inactivité, vous allez être automatiquement déconnecté.',
-					  dialogButton: 'Rester connecté'
+					dialogTitle: '<?php echo _("Automatic logout"); ?>',
+					  dialogText: '<?php echo _("After 15 minutes without activity, you will be logged out !"); ?>.',
+					  dialogButton: '<?php echo _("Stay logged in"); ?>'
 				});
 			});
 	<?php } ?>

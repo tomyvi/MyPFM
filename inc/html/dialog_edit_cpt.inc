@@ -38,7 +38,7 @@
 				width: 470,
 				modal: true,
 				buttons: {
-					"Modifier": function() {
+					"<?php echo _("Edit"); ?>": function() {
 						
 						t_cpt_id = $('#t_edit_cpt_id').val();
 						t_cpt_lib = ($('#t_edit_cpt_lib').val());
@@ -57,7 +57,7 @@
 						//verification des données
 						error = false;
 						if(t_cpt_lib == ""){
-							alert('Merci de saisir un libelle pour le compte !!');
+							alert('<?php echo _("Please fill in an account name"); ?> !!');
 							$('#t_edit_cpt_lib').focus();
 							return;
 						}
@@ -99,7 +99,7 @@
 										layout: 'top',
 										type: 'success',
 										timeout: 3000,
-										text: 'Le compte ' + data.compte.libelle_long + ' a bien été mis à jour !'
+										text: '<?php echo _("The account"); ?> ' + data.compte.libelle_long + ' <?php echo _("has been updated"); ?> !'
 									});									
 								}else{
 									$('#dialog-edit-cpt').dialog('close');
@@ -115,7 +115,7 @@
 					},
 					"Supprimer": function() {
 						
-						if(confirm("Etes vous sûr de vouloir supprimer ce compte ?\n(Toutes les transactions pour ce compte seront également supprimées)")){
+						if(confirm("<?php echo _("Do you really want to delete this account ?\n(All transactions will be erased)"); ?>")){
 							t_cpt_id = $('#t_edit_cpt_id').val();
 							compte = {id:t_cpt_id};
 							
@@ -134,7 +134,7 @@
 											layout: 'top',
 											type: 'success',
 											timeout: 3000,
-											text: 'Le compte ' + data.compte.libelle_long + ' a bien été mis à jour !'
+											text: '<?php echo _("The account has been deleted"); ?> !'
 										});									
 									}else{
 										$('#dialog-edit-cpt').dialog('close');
@@ -151,7 +151,7 @@
 							$( '#dialog-edit-cpt' ).dialog( "close" );
 						}
 					},
-					"Annuler": function() {
+					"<?php echo _("Cancel"); ?>": function() {
 						$( '#dialog-edit-cpt' ).dialog( "close" );
 					}
 				},
@@ -171,29 +171,29 @@
 			
 		});
 	</script>
-	<div id="dialog-edit-cpt" title="Editer le compte" class="dialog">
+	<div id="dialog-edit-cpt" title="<?php echo _("Edit account"); ?>" class="dialog">
 
 		<form>
 			<input type="hidden" id="t_edit_cpt_id" value="" />
-			<p>Veuillez saisir les informations pour le compte :</p>
+			<p><?php echo _("Please fill in account details"); ?> :</p>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_edit_cpt_lib">Libell&eacute; :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_edit_cpt_lib"><?php echo _("Label"); ?> :</label></div>
 				<div class="diag_champ"><input name="t_edit_cpt_lib" id="t_edit_cpt_lib" size="45" maxlength="20"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_edit_cpt_liblong">Libell&eacute; long :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_edit_cpt_liblong"><?php echo _("Detailed label"); ?> :</label></div>
 				<div class="diag_champ"><input name="t_edit_cpt_liblong" id="t_edit_cpt_liblong" size="45" maxlength="255"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_edit_cpt_etab">&Eacute;tablissement :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_edit_cpt_etab"><?php echo _("Bank"); ?> :</label></div>
 				<div class="diag_champ"><input name="t_edit_cpt_etab" id="t_edit_cpt_etab" size="45" maxlength="255"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_edit_cpt_url">URL :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_edit_cpt_url"><?php echo _("URL"); ?> :</label></div>
 				<div class="diag_champ"><input name="t_edit_cpt_url" id="t_edit_cpt_url" size="45" maxlength="255"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_edit_cpt_id_type">Type :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_edit_cpt_id_type"><?php echo _("Account type"); ?> :</label></div>
 				<div class="diag_champ">
 					<select  name="t_edit_cpt_id_type" id="t_edit_cpt_id_type">
 					<?php
@@ -209,22 +209,22 @@
 				</div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_edit_cpt_no">N de compte :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_edit_cpt_no"><?php echo _("Account number"); ?> :</label></div>
 				<div class="diag_champ"><input name="t_edit_cpt_no" id="t_edit_cpt_no" size="45" maxlength="26"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_edit_cpt_soldeouv">Solde d'ouverture :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_edit_cpt_soldeouv"><?php echo _("Opening balance"); ?> :</label></div>
 				<div class="diag_champ"><input name="t_edit_cpt_soldeouv" id="t_edit_cpt_soldeouv" size="8" maxlength="255" alt="montant_msk"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_edit_cpt_cloture">Compte clot :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_edit_cpt_cloture"><?php echo _("Closed"); ?> :</label></div>
 				<div class="diag_champ"><input type="checkbox" name="t_edit_cpt_cloture" id="t_edit_cpt_cloture"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_edit_cpt_is_synthese">Afficher en synthèse :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_edit_cpt_is_synthese"><?php echo _("Display in dashboard"); ?> :</label></div>
 				<div class="diag_champ"><input type="checkbox" name="t_edit_cpt_is_synthese" id="t_edit_cpt_is_synthese"></div>
 			</div>
-			<span id="loading_spin_editcpt" class="loading_spin" ><img src="./img/ajax-loader-spinner.gif" /> Chargement en cours...</span>
+			<span id="loading_spin_editcpt" class="loading_spin" ><img src="./img/ajax-loader-spinner.gif" /> <?php echo _("Loading in progress"); ?>...</span>
 			
 		</form>
 	</div>

@@ -22,11 +22,11 @@
 						if(data != "" && data !="ERREUR"){
 							
 						}else{
-							alert('Erreur lors de la mise à jour !!');
+							alert('<?php echo _("Error during account sort order request"); ?> !!');
 						}
 					},
 					error: function(){
-						alert('Erreur lors de demande de mise à jour !!');
+						alert('<?php echo _("Error during account sort order request"); ?> !!');
 					}
 				});
 			}
@@ -54,12 +54,12 @@
 	$lc = ListeComptes::getInstance();
 	
 	if($lc->getNbComptes(true)>0){
-		echo "<div class='lien lien_afficher_cpt_clos'>Afficher les comptes clos</div>";
+		echo "<div class='lien lien_afficher_cpt_clos'>"._("Show closed accounts")."</div>";
 	}
 	?>
 	
 	<div class='balances'>
-		<div class='balance'>Balance globale : <div class='' id='solde_global' data-solde_global=""></div></div>
+		<div class='balance'><?php echo _("Global balance"); ?> : <div class='' id='solde_global' data-solde_global=""></div></div>
 		
 		<?php
 		
@@ -73,7 +73,7 @@
 			}
 			$t_user_solde = number_format($user_solde,2,","," ")." &#8364;";
 			echo "
-				<div class='balance'>Balance ".$u->nom." :<div class='$style' id='solde_user_$uid'>$t_user_solde</div></div>
+				<div class='balance'>"._("Balance")." ".$u->nom." :<div class='$style' id='solde_user_$uid'>$t_user_solde</div></div>
 				<script>
 					solde_users[$uid] = $user_solde;
 				</script>

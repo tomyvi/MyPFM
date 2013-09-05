@@ -4,13 +4,13 @@
 	
 	function do_login(){
 		if ($('#login').val() === '') {
-			alert('Veuillez saisir votre login !');
+			alert('<?php echo _("Please fill in your login"); ?> !');
 			$('#login').focus();
 			return false;
 		}
 
 		if ($('#pwd').val() === '') {
-			alert('Veuillez saisir votre mot de passe !');
+			alert('<?php echo _("Please fill in your password"); ?> !');
 			$('#pwd').focus();
 			return false;
 		}
@@ -53,11 +53,11 @@
 		<input type="hidden" id="challenge" name="challenge" value="<?php echo $_SESSION["challenge"]; ?>"/>
 		<div class="login_box">
 			<div class="row">
-				<span class="libelle">Login :</span>
+				<span class="libelle"><?php echo _("Login"); ?> :</span>
 				<span class="donnee"><input type="text" name="login" id="login" tabindex="1"/></span>
 			</div>
 			<div class="row">
-				<span class="libelle">Mot de passe :</span>
+				<span class="libelle"><?php echo _("Password"); ?> :</span>
 				<span class="donnee"><input type="password" name="pwd" id="pwd" tabindex="2" /></span>
 			</div>
 			<div class="errormsg"><center>
@@ -68,7 +68,7 @@
 			 } ?>
 			</center></div>
 			<div class="row"><center>
-				<input type="button" value="Login" tabindex="3"/>
+				<input type="button" value="<?php echo _("Login"); ?>" tabindex="3"/>
 			</center></div>
 		</div>
 	</form>

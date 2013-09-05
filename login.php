@@ -19,11 +19,11 @@ if($dest_url == "") $dest_url = "./";
 //traitement demande logout
 if(array_key_exists("out",$_GET)){
 	session_unset();
-	$errormsg = "Vous avez bien été déconnecté !";
+	$errormsg = _("You have successfully logged out")." !";
 }
 //traitement auto logout
 if(array_key_exists("auto",$_GET)){
-	$errormsg = "Suite à 15 minutes d'inactivité, vous avez été déconnecté automatiquement.";
+	$errormsg = _("After 15 minutes without activity, you have been automatically logged out");
 }
 
 //traitement accès login mais déjà loggé
@@ -40,7 +40,7 @@ if($_POST['username']!='' && $_POST['response']!=''){
 		header('Location: '.$dest_url);
 		exit;
 	}else{
-		$errormsg = 'Login ou mot de passe incorrect !';
+		$errormsg = _("Wrong login or password").' !';
 	}
 }
 

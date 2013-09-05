@@ -3,7 +3,6 @@
 
 require_once(dirname(__FILE__) ."/inc/init.inc.php");
 
-
 require_once(dirname(__FILE__) . '/inc/html/header.inc');
 ?><center>
 <div class="colonne_2">
@@ -12,8 +11,8 @@ $(document).ready(function(){
 	$('#menu_synthese').addClass('current');
 	$('.update_cpt_graph').click(function(){
 		id_compte = $(this).parent().parent().data('id_compte');
-		console.log('Demande update graph pour compte ' + id_compte);
-		location.href = './actualiser_transactions_futures.php?idc='+id_compte;
+		console.log('Update graph request for account ID ' + id_compte);
+		location.href = './update_futures.php?idc='+id_compte;
 		return false;
 	});
 });
@@ -25,7 +24,7 @@ $lc = ListeComptes::getInstance();
 $lc_max_transac_date = $lc->getMaxTransactionDate();
 $last_month = date_last_month(date_last_month($lc_max_transac_date));
 
-//situation globale épargne
+//global balance
 foreach(Compte::getListe() as $cpt){
 	
 	if($data != "") $data .= ",\n";
@@ -54,7 +53,7 @@ $(document).ready(function() {
 			height: 200
 		},
 		title: {
-			text: 'Etat de l\'épargne'
+			text: '<?php echo(_("Current balance")); ?>'
 		},
 		xAxis:{title: false, categories: ['J - 60', 'J']},
 		tooltip: {
@@ -137,7 +136,7 @@ foreach(Compte::getListe() as $cpt){
 						text: ''
 					},
 					xAxis: {
-						categories: ['Revenus', 'Dépenses']
+						categories: ['<?php echo _("Incomes"); ?>', '<?php echo _("Expenses"); ?>']
 					},
 					yAxis:{
 						title: false,
@@ -158,11 +157,11 @@ foreach(Compte::getListe() as $cpt){
 					},
 					series: [{
 						color: '#E16766',
-						name:'Depenses',
+						name:'<?php echo _("Expenses"); ?>',
 						data: [0, <?php echo $flux_n;?>]
 					},{
 						color: '#67E168',
-						name:'Revenus',
+						name:'<?php echo _("Incomes"); ?>',
 						data: [<?php echo $flux_p;?>, 0]
 					}]
 				});
@@ -193,7 +192,7 @@ foreach(Compte::getListe() as $cpt){
 				
 			}
 			
-			//ajout des transactions prévues pour la fin de mois
+			//adding future transactions
 			$cpt->getTransactionsFutures($max_transac_date);
 			foreach($cpt->transactions_futures as $t){
 				$date = $t->date_transaction;
@@ -244,13 +243,13 @@ foreach(Compte::getListe() as $cpt){
 					series: [
 						{
 							type:'area',
-							name:'Solde',
+							name:'<?php echo _("Balance"); ?>',
 							color: '#67E168',
 							data: [<?php echo $data;?>]
 						},
 						{
 							type:'area',
-							name:'Solde previsionnel',
+							name:'<?php echo _("Estimated future Balance"); ?>',
 							color: '#67E168',
 							dashStyle:'Dash',
 							lineWidth:2,
@@ -278,12 +277,12 @@ foreach(Compte::getListe() as $cpt){
 			echo "
 				<div class='graph_solde' data-id_compte='".$cpt->id."'>
 					<input type='hidden' id='id_cpt_graph'/>
-					<div class='titre_graph'><a href='./afficher_compte.php#".$cpt->cle."' title='Afficher les transactions du compte'>".$cpt->libelle."</a> <span class='update_cpt_graph' title='Actualiser la projection de solde'></span></div>
-					Balance des 30 derniers jours :
+					<div class='titre_graph'><a href='./display.php#".$cpt->cle."' title='". _("Display account transactions")."'>".$cpt->libelle."</a> <span class='update_cpt_graph' title='"._("Update estimated future balance")."'></span></div>
+					"._("Balance 30 days ago")." :
 					<div class='graph_cpt_flux' id='chart_flux_".$cpt->id."'></div>
-					Solde pr&eacute;visionnel :
+					"._("Estimated future balance")." :
 					<div class='graph_cpt_solde' id='chart_solde_".$cpt->id."'></div>
-					<div class='solde_fin_mois'>Solde au ".affichedatecourte($max_transac_date)." : <span class='".$style_solde_courant."'>".number_format($solde_courant,2,","," ")." &#8364;</span>, atterrissage M+1 : <span class='".$style_solde_futur."'>".number_format($solde_futur,2,","," ")." &#8364;</span></div>
+					<div class='solde_fin_mois'>"._("Balance on")." ".affichedatecourte($max_transac_date)." : <span class='".$style_solde_courant."'>".number_format($solde_courant,2,","," ")." &#8364;</span>, "._("Projected balance")." : <span class='".$style_solde_futur."'>".number_format($solde_futur,2,","," ")." &#8364;</span></div>
 				</div>
 			";
 		}
@@ -295,6 +294,6 @@ foreach(Compte::getListe() as $cpt){
 </div><!-- colonne_2 !-->
 </center>
 <?php
-require_once(dirname(__FILE__) . '/inc/html/recherche.inc');
+require_once(dirname(__FILE__) . '/inc/html/search.inc');
 require_once(dirname(__FILE__) . '/inc/html/footer.inc');
 ?>

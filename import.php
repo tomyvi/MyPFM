@@ -4,7 +4,7 @@ require_once(dirname(__FILE__) .'/inc/init.inc.php');
 
 $response = array();
 
-//annulation d'un précédent import
+//cancel previous import by ID
 if(isset($_GET['undoid']) && $_GET['undoid'] != ''){
 	
 	$q = "SELECT COUNT(*) AS nb_transactions FROM ".db_table_name('transactions')." WHERE id_import = '".$_GET['undoid']."'";
@@ -16,7 +16,7 @@ if(isset($_GET['undoid']) && $_GET['undoid'] != ''){
 	$res = mysql_query($q);
 	if (!$res) {
 		//throw new MyException('Invalid query: '.$q . mysql_error());
-		$response['error'] = "Impossible de supprimer les transactions !! $q";
+		$response['error'] = _("Unable to delete transactions")." !! $q";
 		$response['status'] = false;
 		echo json_encode($response);
 		exit;
@@ -36,7 +36,7 @@ if(count($_FILES) != 1){
 	
 	//header("Location:afficher.php?import=ko&error=no_file#".$_POST['id_compte']);
 	
-	$response['error'] = "Pas de fichier à traiter !!";
+	$response['error'] = _("No file to process")." !!";
 	$response['status'] = false;
 	echo json_encode($response);
 	exit;
@@ -44,7 +44,7 @@ if(count($_FILES) != 1){
 if ($_FILES["file"]["error"] > 0){
 	//throw new  MyException('Erreur : ' . $_FILES["file"]["error"]);
 	
-	$response['error'] = "Impossible de traiter le fichier : ".$_FILES["file"]["error"]." !!";
+	$response['error'] = _("Unable to process file")." : ".$_FILES["file"]["error"]." !!";
 	$response['status'] = false;
 	echo json_encode($response);
 	exit;
@@ -57,7 +57,7 @@ if ($_FILES["file"]["error"] > 0){
 try{
 	$c = new Compte($_GET['idc']);
 }catch(Exception $e){
-	$response['error'] = "Impossible de trouver le compte : " . $e->getMessage();
+	$response['error'] = _("Account not found")." : " . $e->getMessage();
 	$response['status'] = false;
 	echo json_encode($response);
 	exit;
@@ -139,14 +139,14 @@ switch($file_type){
 				}catch(DuplicateTransactionException $de){
 					$possible_duplicates[] = $t;
 				}catch(Exception $e){
-					$response['error'] = "Erreur à l'ajout d'une transaction (j'annule l'import) : " . $e->getMessage();
+					$response['error'] = _("Error adding transaction, import canceled")." : " . $e->getMessage();
 					$response['status'] = false;
 					
 					$q = "DELETE FROM ".db_table_name('transactions')." WHERE id_import = '".$import_id."'";
 					$res = mysql_query($q);
 					if (!$res) {
 						//throw new MyException('Invalid query: '.$q . mysql_error());
-						$response['error'] .= "Impossible d'importer la transaction (".count($c->transactions)." transaction(s) importée(s)) !! $q";
+						$response['error'] .= _("Unable to delete transaction")." (".count($c->transactions)." "._("transaction(s) imported"). ") !! $q";
 						$response['status'] = false;
 					}
 					
@@ -175,7 +175,7 @@ switch($file_type){
 				$response['duplicates'] = $possible_duplicates;
 				$response['import_id'] = $import_id;
 			}catch(Exception $e){
-				$response['error'] = "Erreur à l'actualisation des données du compte : " + $e->getMessage();
+				$response['error'] = _("Error when updating account data")." : " + $e->getMessage();
 				$response['status'] = false;
 				echo json_encode($response);
 				exit;
@@ -185,7 +185,7 @@ switch($file_type){
 		
 			//throw new  MyException("impossible d'ouvrir le fichier $csv_file_path");
 			$response['status'] = false;
-			$response['error'] = "Impossible d'ouvrir le fichier envoyé !!";
+			$response['error'] = _("Impossible to open file")." !!";
 			
 		}
 		
@@ -263,14 +263,14 @@ switch($file_type){
 						$possible_duplicates[$cpt_duplicates - 1]['duplicate'] = $t;
 						
 					}catch(Exception $e){
-						$response['error'] = "Erreur à l'ajout d'une transaction (j'annule l'import) : " . $e->getMessage();
+						$response['error'] = _("Error adding transaction, import canceled")." : " . $e->getMessage();
 						$response['status'] = false;
 						
 						$q = "DELETE FROM ".db_table_name('transactions')." WHERE id_import = '".$import_id."'";
 						$res = mysql_query($q);
 						if (!$res) {
 							//throw new MyException('Invalid query: '.$q . mysql_error());
-							$response['error'] .= "Impossible de supprimer les transactions !! $q";
+							$response['error'] .= _("Unable to delete transactions")." !! $q";
 							$response['status'] = false;
 						}
 						
@@ -301,20 +301,20 @@ switch($file_type){
 					$response['nb_duplicates'] = $cpt_duplicates;
 					$response['import_id'] = $import_id;
 				}catch(Exception $e){
-					$response['error'] = "Erreur à l'actualisation des données du compte : " + $e->getMessage();
+					$response['error'] = _("Error when updating account data")." : " + $e->getMessage();
 					$response['status'] = false;
 					echo json_encode($response);
 					exit;
 				}
 			}else{
 				$response['status'] = false;
-				$response['error'] = "Format du fichier QIF incorrect !!";
+				$response['error'] = _("QIF file format incorrect")." !!";
 			}
 	
 		}else{
 			//throw new  MyException( "impossible d'ouvrir le fichier ".$qif_file_path);;
 			$response['status'] = false;
-			$response['error'] = "Impossible d'ouvrir le fichier envoyé !!";
+			$response['error'] = _("Impossible to open file")." !!";
 		}
 
 		
@@ -322,7 +322,7 @@ switch($file_type){
 	default:
 		//header("Location:afficher.php?import=ko&error=file_type#".$_POST['id_compte']);
 		$response['status'] = false;
-		$response['error'] = "Format du fichier incompatible avec la fonctionnalité (".$_FILES['file']['type'].") !!";
+		$response['error'] = _("File format incompatible with import feature")." (".$_FILES['file']['type'].") !!";
 }
 
 echo json_encode($response);

@@ -4,7 +4,6 @@ require_once(dirname(__FILE__) ."/inc/init.inc.php");
 $lc = ListeComptes::getInstance();
 
 
-$html_titre = "Graphiques";
 
 require_once(dirname(__FILE__) . '/inc/html/header.inc');
 
@@ -36,17 +35,17 @@ if($_GET['date_debut'] == ''){
 </script>
 <div class="colonne_1">
 	<div class="graph_menu">
-		<div class="titre">D&eacute;penses</div>
-		<div class="type_graph lien" id="DEP_MOIS">par mois</div>
-		<div class="type_graph lien" id="DEP_CAT">par cat&eacute;gorie</div>
-		<div class="titre">Revenus</div>
-		<div class="type_graph lien" id="REV_MOIS">par mois</div>
-		<div class="type_graph lien" id="REV_CAT">par cat&eacute;gorie</div>
-		<div class="titre">Revenus nets</div>
-		<div class="type_graph lien" id="REV_NET_MOIS">par mois</div>
-		<div class="type_graph lien" id="REV_NET_CAT">par cat&eacute;gorie</div>
-		<div class="titre">Solde</div>
-		<div class="type_graph lien" id="SOL_HEBDO">hebdomadaire</div>
+		<div class="titre"><?php echo _("Expenses"); ?></div>
+		<div class="type_graph lien" id="DEP_MOIS"><?php echo _("per month"); ?></div>
+		<div class="type_graph lien" id="DEP_CAT"><?php echo _("per category"); ?></div>
+		<div class="titre"><?php echo _("Incomes"); ?></div>
+		<div class="type_graph lien" id="REV_MOIS"><?php echo _("per month"); ?></div>
+		<div class="type_graph lien" id="REV_CAT"><?php echo _("per category"); ?></div>
+		<div class="titre"><?php echo _("Net incomes"); ?></div>
+		<div class="type_graph lien" id="REV_NET_MOIS"><?php echo _("per month"); ?></div>
+		<div class="type_graph lien" id="REV_NET_CAT"><?php echo _("per category"); ?></div>
+		<div class="titre"><?php echo _("Balance"); ?></div>
+		<div class="type_graph lien" id="SOL_HEBDO"><?php echo _("weekly"); ?></div>
 	</div>
 </div><!-- colonne_1 !-->
 <div class="colonne_2">
@@ -57,20 +56,20 @@ if($_GET['date_debut'] == ''){
 					//header: false,
 					checkAll: function(){$.uniform.update("input:checkbox");},
 					uncheckAll: function(){$.uniform.update("input:checkbox");},
-					checkAllText: 'Tous',
-					uncheckAllText: 'Aucun',
-					noneSelectedText: 'Comptes...',
-					selectedText: '# comptes',
+					checkAllText: '<?php echo _("All"); ?>',
+					uncheckAllText: '<?php echo _("None"); ?>',
+					noneSelectedText: '<?php echo _("Accounts"); ?>...',
+					selectedText: '# <?php echo _("accounts"); ?>',
 					selectedList:1
 				});
 			$('#chart_idcat').multiselect({
 					//header: false,
 					checkAll: function(){$.uniform.update("input:checkbox");},
 					uncheckAll: function(){$.uniform.update("input:checkbox");},
-					checkAllText: 'Tous',
-					uncheckAllText: 'Aucun',
-					noneSelectedText: 'Cat&eacute;gories...',
-					selectedText: '# cat&eacute;gories',
+					checkAllText: '<?php echo _("All"); ?>',
+					uncheckAllText: '<?php echo _("None"); ?>',
+					noneSelectedText: '<?php echo _("Categories"); ?>...',
+					selectedText: '# <?php echo _("categories"); ?>',
 					selectedList:1
 				});
 			
@@ -133,10 +132,10 @@ if($_GET['date_debut'] == ''){
 		});
 	});
 	</script>
-	de : <input type="text" name="date_debut" id="date_debut" size="10" value="<?echo $_GET['date_debut']; ?>"/>
-	&agrave; : <input type="text" name="date_fin" id="date_fin" size="10" value="<?echo $_GET['date_fin']; ?>"/>
+	<?php echo _("from"); ?> : <input type="text" name="date_debut" id="date_debut" size="10" value="<?echo $_GET['date_debut']; ?>"/>
+	<?php echo _("to"); ?> : <input type="text" name="date_fin" id="date_fin" size="10" value="<?echo $_GET['date_fin']; ?>"/>
 	<input type="hidden" name="chart_type" id="chart_type" value="<?php echo $_GET['chart_type']; ?>" />
-	<input type="button" name="afficher" id="afficher" value="Afficher" onclick="chart_form.submit();"/>
+	<input type="button" value="<?php echo _("Display"); ?>" onclick="chart_form.submit();"/>
 	</form><br/>
 	
 	
@@ -173,8 +172,8 @@ if($_GET['date_debut'] == ''){
 				}
 			}
 			
-			if($_GET['chart_type']=="DEP_CAT") $titre_chart = "Depenses par categorie";
-			if($_GET['chart_type']=="REV_CAT") $titre_chart = "Revenus par categorie";
+			if($_GET['chart_type']=="DEP_CAT") $titre_chart = _("Expenses per category");
+			if($_GET['chart_type']=="REV_CAT") $titre_chart = _("Incomes per category");
 			
 			
 			?>
@@ -219,7 +218,7 @@ if($_GET['date_debut'] == ''){
 		case "DEP_MOIS" :
 		case "REV_MOIS" :
 		case "REV_NET_MOIS" :
-			// COURBE DE MOYENNE SUR 6 MOIS
+			// 6 MONTH AVERAGE PLOT
 			$neg = false;
 			$pos = false;
 			if($_GET['chart_type'] != "REV_MOIS"){
@@ -320,16 +319,16 @@ if($_GET['date_debut'] == ''){
 					}
 				}
 			}
-			if($_GET['chart_type']=="DEP_MOIS") $titre_chart = "Depenses mensuelles";
-			if($_GET['chart_type']=="REV_MOIS") $titre_chart = "Revenus mensuels";
-			if($_GET['chart_type']=="REV_NET_MOIS") $titre_chart = "Revenus nets mensuels";
+			if($_GET['chart_type']=="DEP_MOIS") $titre_chart = _("Monthly expenses");
+			if($_GET['chart_type']=="REV_MOIS") $titre_chart = _("Monthly incomes");
+			if($_GET['chart_type']=="REV_NET_MOIS") $titre_chart = _("Monthly net incomes");
 			
 			if(isset($_GET['idcpt']) && $_GET['idcpt'][0]!=""){
 				if(count($_GET['idcpt'])==1){
 					$c = new Compte($_GET['idcpt'][0]);
 					$titre_chart .= " - ".$c->libelle;
 				}else{
-					$titre_chart .=" - pl. comptes";
+					$titre_chart .="";
 				}
 			}
 			if(isset($_GET['idcat']) && $_GET['idcat'][0]!=""){
@@ -337,10 +336,10 @@ if($_GET['date_debut'] == ''){
 					$chart_cat = new Categorie($_GET['idcat'][0]);
 					$titre_chart .= " - ".$chart_cat->nom;
 				}else{
-					$titre_chart .= " - pl. categories";
+					$titre_chart .= "";
 				}
 			}else{
-				$titre_chart .= " - Toutes categories";
+				$titre_chart .= " - "._("All categories");
 			}
 
 
@@ -390,7 +389,7 @@ if($_GET['date_debut'] == ''){
 						{
 							type:'column',
 							color: '#67E168',
-							name:'Revenus',
+							name:'<?php echo _("Incomes"); ?>',
 							data: [<?php echo $data_pos;?>]
 						}
 						<?php } ?>
@@ -401,21 +400,21 @@ if($_GET['date_debut'] == ''){
 						{
 							type:'column',
 							color: '#E16766',
-							name:'Depenses',
+							name:'<?php echo _("Expenses"); ?>',
 							data: [<?php echo $data_neg;?>]
 						}
 						<?php } ?>
 						<?php if($_GET['chart_type'] == "REV_NET_MOIS"){ ?>
 						,{
 							type:'line',
-							name:'Revenus nets',
+							name:'<?php echo _("Net incomes"); ?>',
 							data: [<?php echo $data;?>]
 						}
 						<?php } ?>
 						<?php if($_GET['chart_type'] != "REV_NET_MOIS"){ ?>
 						,{
 							type:'spline',
-							name:'Moyenne mensuelle',
+							name:'<?php echo _("Monthly average"); ?>',
 							dashStyle:'ShortDot',
 							data: [<?php echo $data_moy;?>]
 						}
@@ -464,7 +463,7 @@ if($_GET['date_debut'] == ''){
 				}
 			}
 			
-			$titre_chart = "Revenus nets par categorie";
+			$titre_chart =_("Net incomes per category");
 			
 			
 			?>
@@ -498,13 +497,13 @@ if($_GET['date_debut'] == ''){
 					},
 					series: [{
 						type: 'pie',
-						name: 'Depenses',
+						name: '<?php echo _("Expenses"); ?>',
 						data: [<?php echo $data_neg; ?>],
 						center: [250, 180],
 						size: 250
 					},{
 						type: 'pie',
-						name: 'Recettes',
+						name: '<?php echo _("Incomes"); ?>',
 						data: [<?php echo $data_pos; ?>],
 						center: [700, 180],
 						size: 250
@@ -517,7 +516,6 @@ if($_GET['date_debut'] == ''){
 			break;
 		case "SOL_HEBDO":
 			$soldes = $lc->getSoldes($_GET['idcpt'],$date_fin,$date_debut, "+1 week");
-			//echo "<pre>";print_r($soldes);echo "</pre>"; exit;
 			$nb_points = 0;
 			foreach($soldes as $date => $solde){ //0000-00-00
 				$data .= "[Date.UTC(".substr($date,0,4).", ".(substr($date,5,2)-1).", ".substr($date,8,2)."), ".number_format($solde,2,".","")."]";
@@ -569,7 +567,7 @@ if($_GET['date_debut'] == ''){
 						{
 							type:'area',
 							color: '#67E168',
-							name:'Solde',
+							name:'<?php echo _("Balance"); ?>',
 							data: [<?php echo $data;?>]
 						}
 					],
@@ -673,7 +671,7 @@ if($_GET['date_debut'] == ''){
 				width: 950,
 				modal: true,
 				buttons: {
-						"Fermer": function() {
+						"<?php echo _("Close"); ?>": function() {
 							$( this ).dialog( "close" );
 						}
 					},
@@ -692,17 +690,17 @@ if($_GET['date_debut'] == ''){
 		<table class="liste_transactions" id="liste_transactions">
 			<thead>
 				<tr>
-					<th>Compte</th>
-					<th>Date</th>
-					<th>Libell&eacute;</th>
-					<th>Cat&eacute;gorie</th>
-					<th colspan='2'>Montant</th>
+					<th><?php echo _("Account"); ?></th>
+					<th><?php echo _("Date"); ?></th>
+					<th><?php echo _("Label"); ?></th>
+					<th><?php echo _("Category"); ?></th>
+					<th colspan='2'><?php echo _("Amount"); ?></th>
 				</tr>
 			</thead>
 			<tbody id="transac_tbody">
 			</tbody>
 		</table>
-		<div class="loading_spinner" id="loading_spinner"><img src="./images/ajax-loader-spinner.gif" /> Chargement des transactions...</div>
+		<div class="loading_spinner" id="loading_spinner"><img src="./images/ajax-loader-spinner.gif" /> <?php echo _("Loading transactions"); ?>...</div>
 	</div>
 	
 	

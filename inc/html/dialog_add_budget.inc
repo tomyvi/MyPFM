@@ -28,7 +28,7 @@
 				width: 470,
 				modal: true,
 				buttons: {
-					"Ajouter": function() {
+					"<?php echo _("Add"); ?>": function() {
 						
 						b_nom = $('#b_add_nom').val();
 						b_montant = $('#b_add_montant').val().replace(',','.').replace(' ','');
@@ -40,7 +40,7 @@
 						//verification des données
 						error = false;
 						if(b_nom == ""){
-							alert('Merci de saisir un nom pour le budget !!');
+							alert('<?php echo _("Please fill in a budget name"); ?> !!');
 							$('#b_add_nom').focus();
 							return;
 						}
@@ -65,12 +65,12 @@
 										});
 									}									
 								}else{
-									alert('Erreur lors de la création du budget !!');
+									alert('<?php echo _("Error while creating budget"); ?> !!');
 								}					
 							}
 						});	
 					},
-					"Annuler": function() {
+					"<?php echo _("Cancel"); ?>": function() {
 						$( this ).dialog( "close" );
 					}
 				},
@@ -84,26 +84,26 @@
 			
 		});
 	</script>
-	<div id="dialog-add-budget" title="Ajouter un budget" class="dialog">
+	<div id="dialog-add-budget" title="<?php echo _("Add new budget"); ?>" class="dialog">
 
 		<form>
-			<p>Veuillez saisir les informations pour le budget :</p>
+			<p><?php echo _("Please fill in budget data"); ?> :</p>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="b_add_nom">Nom :</label></div>
+				<div class="diag_libelle align_droite"><label for="b_add_nom"><?php echo _("Name"); ?> :</label></div>
 				<div class="diag_champ"><input name="b_add_nom" id="b_add_nom" size="45" maxlength="20"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="b_add_montant">Montant :</label></div>
+				<div class="diag_libelle align_droite"><label for="b_add_montant"><?php echo _("Amount"); ?> :</label></div>
 				<div class="diag_champ"><input name="b_add_montant" id="b_add_montant" size="8" maxlength="255" alt="montant_msk"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="b_add_actif">Actif :</label></div>
+				<div class="diag_libelle align_droite"><label for="b_add_actif"><?php echo _("Active"); ?> :</label></div>
 				<div class="diag_champ"><input type="checkbox" name="b_add_actif" id="b_add_actif" checked='checked'></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="b_add_stats">Afficher dans les statistiques :</label></div>
+				<div class="diag_libelle align_droite"><label for="b_add_stats"><?php echo _("Display in statistics"); ?> :</label></div>
 				<div class="diag_champ"><input type="checkbox" name="b_add_stats" id="b_add_stats" checked='checked'></div>
 			</div>
-			<span id="loading_spin_addbudget" ><img src="./img/ajax-loader-spinner.gif" /> Chargement en cours...</span>			
+			<span id="loading_spin_addbudget" ><img src="./img/ajax-loader-spinner.gif" /> <?php echo _("Loading in progress"); ?>...</span>			
 		</form>
 	</div>

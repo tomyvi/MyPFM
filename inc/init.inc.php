@@ -1,23 +1,29 @@
 <?php
 
-//lancement chrono generation de page (==> footer.inc)
-$temps_debut = microtime(true);
-
 require_once(dirname(__FILE__) . "/config.inc.php");
 require_once(dirname(__FILE__) . "/fonctions.inc.php");
 
 
+// Locale setup
+if (!defined('LC_MESSAGES')) define('LC_MESSAGES', 6);
+putenv("LANG=".$_config['lang']);
+setlocale(LC_ALL, $_config['lang']);
+$domain = "messages";
+bindtextdomain($domain, "./locale");
+bind_textdomain_codeset($domain, 'UTF-8');
+textdomain($domain);
 
-//ouverture connexion MySQL
+
+//opening mysql connection
 $link = mysql_connect($_config["mysql_server"],$_config["mysql_user"],$_config["mysql_pwd"]);
 if (!$link) {
-	die('Could not connect: ' . mysql_error());
+	die(_('Could not connect').' : ' . mysql_error());
 }
 mysql_select_db($_config["mysql_db"]);
 
 
 
-//si on est pas sur la page de login, on teste si l'utilisateur est loggé
+//if not on login page, test if user is logged in
 if(!$login_page && !$rss_page){
 	session_start();
 	if(!User::is_user_logged_in())

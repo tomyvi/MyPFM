@@ -51,7 +51,7 @@
 			width: 470,
 			modal: true,
 			buttons: {
-				"Modifier": function() {
+				"<?php echo _("Edit"); ?>": function() {
 					t_id_transac = $('#t_edit_id_transac').val();
 					t_id_compte = $('#t_edit_id_compte').val();
 					t_date = $('#t_edit_date').val();
@@ -66,17 +66,17 @@
 					//verification des données
 					error = false;
 					if (t_date == "") {
-						alert('Merci de selectionner une date !!');
+						alert('<?php echo _("Please fill in a transaction date"); ?> !!');
 						$('#t_edit_date').focus();
 						return;
 					}
 					if (t_libelle == "") {
-						alert('Merci de saisir un libelle !!');
+						alert('<?php echo _("Please fill in a transaction label"); ?> !!');
 						$('#t_edit_lib').focus();
 						return;
 					}
 					if (t_montant == "") {
-						alert('Merci de saisir un montant !!');
+						alert('<?php echo _("Please fill in a transaction amount"); ?> !!');
 						$('#t_edit_montant').focus();
 						return;
 					}
@@ -115,7 +115,7 @@
 				"Supprimer": function() {
 					t_id_transac = $('#t_edit_id_transac').val();
 					id_compte = $('.actif').data('id');
-					if (confirm('Etes vous sur de vouloir supprimer la transaction ?')) {
+					if (confirm('<?php echo _("Do you really want to delete transaction"); ?> ?')) {
 						
 						transaction = {id:t_id_transac}
 						
@@ -145,7 +145,7 @@
 						});
 					}
 				},
-				"Annuler": function() {
+				"<?php echo _("Cancel"); ?>": function() {
 					$('#dialog-edit-transac').dialog("close");
 				}
 			},
@@ -169,15 +169,15 @@
 		});
 	});
 </script>
-<div id="dialog-edit-transac" title="Editer la transaction" class="dialog">
+<div id="dialog-edit-transac" title="<?php echo _("Edit transaction"); ?>" class="dialog">
 	<form>
 		<input type="hidden" name="t_edit_id_transac" id="t_edit_id_transac" value=""
 		/>
 		<input type="hidden" name="t_edit_id_compte" id="t_edit_id_compte" value="" />
-		<p>Veuillez saisir les informations pour la transaction :</p>
+		<p><?php echo _("Please fill in transaction details"); ?> :</p>
 		<div class="diag_ligne">
 			<div class="diag_libelle align_droite">
-				<label for="t_edit_lib">Libell&eacute; :</label>
+				<label for="t_edit_lib"><?php echo _("Label"); ?> :</label>
 			</div>
 			<div class="diag_champ">
 				<input name="t_edit_lib" id="t_edit_lib" size="45" maxlength="255">
@@ -185,7 +185,7 @@
 		</div>
 		<div class="diag_ligne">
 			<div class="diag_libelle align_droite">
-				<label for="t_edit_comm">Commentaire :</label>
+				<label for="t_edit_comm"><?php echo _("Comment"); ?> :</label>
 			</div>
 			<div class="diag_champ">
 				<input name="t_edit_comm" id="t_edit_comm" size="45" maxlength="255">
@@ -193,7 +193,7 @@
 		</div>
 		<div class="diag_ligne">
 			<div class="diag_libelle align_droite">
-				<label for="t_edit_date">Date :</label>
+				<label for="t_edit_date"><?php echo _("Date"); ?> :</label>
 			</div>
 			<div class="diag_champ">
 				<input name="t_edit_date" id="t_edit_date" size="12">
@@ -201,46 +201,46 @@
 		</div>
 		<div class="diag_ligne">
 			<div class="diag_libelle align_droite">
-				<label for="t_edit_montant">Montant :</label>
+				<label for="t_edit_montant"><?php echo _("Amount"); ?> :</label>
 			</div>
 			<div class="diag_champ">
 				<input name="t_edit_montant" id="t_edit_montant" size="8" alt="montant_msk">&#8364;</div>
 		</div>
 		<div class="diag_ligne">
 			<div class="diag_libelle align_droite">
-				<label for="t_edit_idcat">Cat&eacute;gorie :</label>
+				<label for="t_edit_idcat"><?php echo _("Category"); ?> :</label>
 			</div>
 			<div class="diag_champ">
-				<select data-placeholder="Catégorie..." name="t_edit_idcat" id="t_edit_idcat">
+				<select data-placeholder="<?php echo _("Category"); ?>..." name="t_edit_idcat" id="t_edit_idcat">
 					<option value=''></option>
 					<?php 
 					foreach(Categorie::getListe() as $cat){
 						echo "<option value='".$cat->id."'>".htmlentities($cat->nom)."</option>\n";
 					}
-					?></select> <i>(facultatif)</i>
+					?></select> <i>(<?php echo _("optional"); ?>)</i>
 
 			</div>
 		</div>
 		<div class="diag_ligne">
 			<div class="diag_libelle align_droite">
-				<label for="t_edit_idbudget">Budget :</label>
+				<label for="t_edit_idbudget"><?php echo _("Budget"); ?> :</label>
 			</div>
 			<div class="diag_champ">
-				<select data-placeholder="Budget..." name="t_edit_idbudget" id="t_edit_idbudget">
+				<select data-placeholder="<?php echo _("Budget"); ?>..." name="t_edit_idbudget" id="t_edit_idbudget">
 					<option value=''></option>
 					<?php 
 					foreach(Budget::getListe() as $b){
 						echo "<option value='".$b->id."'>".htmlentities($b->nom)."</option>\n";
 					}
 					?>
-					</select> <i>(facultatif)</i>
+					</select> <i>(<?php echo _("optional"); ?>)</i>
 
 			</div>
 		</div>
-		<div class="diag_ligne info_transac_popup">Date d'import : <span id="t_edit_date_import"></span>
-			<br/>Date de derni&egrave;re mise &agrave; jour : <span id="t_edit_date_miseajour"></span>
+		<div class="diag_ligne info_transac_popup"><?php echo _("Import date"); ?> : <span id="t_edit_date_import"></span>
+			<br/><?php echo _("Last update date"); ?> : <span id="t_edit_date_miseajour"></span>
 
-		</div>	<span id="loading_spin_edittransac" class="loading_spin"><img src="./img/ajax-loader-spinner.gif" /> Chargement en cours...</span>
+		</div>	<span id="loading_spin_edittransac" class="loading_spin"><img src="./img/ajax-loader-spinner.gif" /> <?php echo _("Loading in progress"); ?>...</span>
 
 	</form>
 </div>

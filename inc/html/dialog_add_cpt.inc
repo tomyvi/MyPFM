@@ -1,13 +1,5 @@
-<script>
-		
-
-		
-		
-		
+<script>		
 		$(document).ready(function(){
-			
-			
-			
 			$('#lien_add_cpt').click(function(){
 				$('#dialog-add-cpt').dialog('open');				
 			});
@@ -28,7 +20,7 @@
 				width: 470,
 				modal: true,
 				buttons: {
-					"Ajouter": function() {
+					"<?php echo _("Add"); ?>": function() {
 						
 						t_cpt_id = $('#t_add_cpt_id').val();
 						t_cpt_lib = ($('#t_add_cpt_lib').val());
@@ -44,7 +36,7 @@
 						//verification des données
 						error = false;
 						if(t_cpt_lib == ""){
-							alert('Merci de saisir un libelle pour le compte !!');
+							alert('<?php echo _("Please fill in an account name"); ?> !!');
 							$('#t_add_cpt_lib').focus();
 							return;
 						}
@@ -66,11 +58,11 @@
 								if(data != ""){ 
 									$( this ).dialog( "close" );
 									if(data.status){
-										if(location.href.indexOf("afficher_compte.php") !== -1){
+										if(location.href.indexOf("display.php") !== -1){
 											prepend_compte(data.compte);
 											get_compte(data.compte.id);
 										}else{
-											location.href = './afficher_compte.php#' + t_cpt_cle;
+											location.href = './display.php#' + t_cpt_cle;
 										}
 									}else{
 										notif = noty({
@@ -81,12 +73,12 @@
 										});
 									}									
 								}else{
-									alert('Erreur lors de la création du compte !!');
+									alert('<?php echo _("Error when creating account"); ?> !!');
 								}					
 							}
 						});	
 					},
-					"Annuler": function() {
+					"<?php echo _("Cancel"); ?>Annuler": function() {
 						$( this ).dialog( "close" );
 					}
 				},
@@ -105,29 +97,29 @@
 			
 		});
 	</script>
-	<div id="dialog-add-cpt" title="Ajouter un compte" class="dialog">
+	<div id="dialog-add-cpt" title="<?php echo _("Add account"); ?>" class="dialog">
 
 		<form>
 			<input type="hidden" id="t_add_cpt_id" value="" />
-			<p>Veuillez saisir les informations pour le compte :</p>
+			<p><?php echo _("Please fill in account details"); ?> :</p>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_add_cpt_lib">Libell&eacute; :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_add_cpt_lib"><?php echo _("Label"); ?> :</label></div>
 				<div class="diag_champ"><input name="t_add_cpt_lib" id="t_add_cpt_lib" size="45" maxlength="20"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_add_cpt_liblong">Libell&eacute; long :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_add_cpt_liblong"><?php echo _("Detailed label"); ?> :</label></div>
 				<div class="diag_champ"><input name="t_add_cpt_liblong" id="t_add_cpt_liblong" size="45" maxlength="255"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_add_cpt_etab">&Eacute;tablissement :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_add_cpt_etab"><?php echo _("Bank"); ?> :</label></div>
 				<div class="diag_champ"><input name="t_add_cpt_etab" id="t_add_cpt_etab" size="45" maxlength="255"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_add_cpt_url">URL :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_add_cpt_url"><?php echo _("URL"); ?> :</label></div>
 				<div class="diag_champ"><input name="t_add_cpt_url" id="t_add_cpt_url" size="45" maxlength="255"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_add_cpt_id_type">Type :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_add_cpt_id_type"><?php echo _("Account type"); ?> :</label></div>
 				<div class="diag_champ">
 					<select  name="t_add_cpt_id_type" id="t_add_cpt_id_type">
 					<?php
@@ -143,17 +135,17 @@
 				</div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_add_cpt_no">N de compte :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_add_cpt_no"><?php echo _("Account number"); ?> :</label></div>
 				<div class="diag_champ"><input name="t_add_cpt_no" id="t_add_cpt_no" size="45" maxlength="26"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_add_cpt_soldeouv">Solde d'ouverture :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_add_cpt_soldeouv"><?php echo _("Opening balance"); ?> :</label></div>
 				<div class="diag_champ"><input name="t_add_cpt_soldeouv" id="t_add_cpt_soldeouv" size="8" maxlength="255" alt="montant_msk"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_add_cpt_is_synthese">Afficher en synthèse :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_add_cpt_is_synthese"><?php echo _("Display in dashboard"); ?> :</label></div>
 				<div class="diag_champ"><input type="checkbox" name="t_add_cpt_is_synthese" id="t_add_cpt_is_synthese"></div>
 			</div>
-			<span id="loading_spin_addcpt" ><img src="./img/ajax-loader-spinner.gif" /> Chargement en cours...</span>			
+			<span id="loading_spin_addcpt" ><img src="./img/ajax-loader-spinner.gif" /> <?php echo _("Loading in progress"); ?>...</span>			
 		</form>
 	</div>

@@ -7,7 +7,7 @@ require_once(dirname(__FILE__) . '/inc/html/header.inc');
 
 ?>
 <div class="reporting-budget-header">
-	Tout <span class="lien" id="reporting-budget-showall-link">développer</span> / <span class="lien" id="reporting-budget-hideall-link">masquer</span>
+	<span class="lien" id="reporting-budget-showall-link"><?php echo _("Display all"); ?></span> / <span class="lien" id="reporting-budget-hideall-link"><?php echo _("Hide all"); ?></span>
 </div>
 <?php
 
@@ -15,8 +15,8 @@ foreach(Budget::getListe() as $b){
 	
 	if($b->statistiques){
 	
-		$data =  "{name: 'Solde restant', data: [".($b->montant + $b->solde)."], color: '#E16766'}, ";
-		$data .= "{name: 'Montant consommé', data: [".(0 - $b->solde)."], color: '#67E168'}";
+		$data =  "{name: '"._("Remaining balance")."', data: [".($b->montant + $b->solde)."], color: '#E16766'}, ";
+		$data .= "{name: '"._("Balance left")."', data: [".(0 - $b->solde)."], color: '#67E168'}";
 		
 		$per_cats = $b->getTransactionsParCategorie();
 		$nb_pos = 0;
@@ -88,7 +88,7 @@ foreach(Budget::getListe() as $b){
 					height: 250
 				},
 				title: {
-					text: 'Dépenses par catégorie'
+					text: '<?php echo _("Expenses per category"); ?>'
 				},
 				plotOptions: {
 					pie: {
@@ -129,11 +129,11 @@ foreach(Budget::getListe() as $b){
 						<table class="liste_transactions table_header" id='table_transac_header'>
 							<thead>
 								<tr>
-									<th class="date">Date</th>
+									<th class="date"><?php echo _("Date"); ?></th>
 									<th class="edit_transac"></th>
-									<th class="libelle">Libellé</th>
-									<th class="categorie">Catégorie</th>
-									<th class="montant">Montant</th>
+									<th class="libelle"><?php echo _("Label"); ?></th>
+									<th class="categorie"><?php echo _("Category"); ?></th>
+									<th class="montant"><?php echo _("Amount"); ?></th>
 								</tr>
 							</thead>
 						</table>
@@ -154,8 +154,8 @@ foreach(Budget::getListe() as $b){
 				</div>
 				<div class="reporting-budget-graphdepenses" id="chart_cat_<?php echo $b->id; ?>" style="display:hidden;"></div>
 				<div class="reporting-budget-showmore">
-					<span class='lien reporting-budget-showmorelink'>Afficher détails</span> / 
-					<span class="reporting-budget-modifylink"><span class='lien'>Modifier</span></span>
+					<span class='lien reporting-budget-showmorelink'><?php echo _("Show details"); ?></span> / 
+					<span class="reporting-budget-modifylink"><span class='lien'><?php echo _("Edit"); ?></span></span>
 					
 				</div>
 			</div>
@@ -249,7 +249,7 @@ foreach(Budget::getListe() as $b){
 						layout: 'top',
 						type: 'error',
 						timeout: 3000,
-						text: 'Impossible de charger les transactions pour budget ' + id_budget + ' !'
+						text: '<?php echo _("Unable to load transactions for budget"); ?> ' + id_budget + ' !'
 					});
 				}
 			});
@@ -273,7 +273,7 @@ foreach(Budget::getListe() as $b){
 			$('#budget_more_transac_'+id_budget).hide();
 			$('#chart_cat_'+id_budget).hide();
 			$('div[data-id_budget=' + id_budget + ']').width('');
-			$('div[data-id_budget=' + id_budget + ']').find('.reporting-budget-showmorelink').html('Afficher détails');
+			$('div[data-id_budget=' + id_budget + ']').find('.reporting-budget-showmorelink').html('<?php echo _("Show details"); ?>');
 			$('.scrollable').getNiceScroll().resize();
 		}
 		if(!visible){
@@ -282,7 +282,7 @@ foreach(Budget::getListe() as $b){
 					$('div[data-id_budget=' + id_budget + ']').width('1005px');
 					$('#budget_more_transac_'+id_budget).show();
 					$('#chart_cat_'+id_budget).show();
-					$('div[data-id_budget=' + id_budget + ']').find('.reporting-budget-showmorelink').html('Masquer détails');
+					$('div[data-id_budget=' + id_budget + ']').find('.reporting-budget-showmorelink').html('<?php echo _("Hide details"); ?>');
 					sync_column_width('#table_transac_header','#table_transac');
 					$('.scrollable').getNiceScroll().resize();
 				});
@@ -290,7 +290,7 @@ foreach(Budget::getListe() as $b){
 				$('div[data-id_budget=' + id_budget + ']').width('1005px');
 				$('#budget_more_transac_'+id_budget).show();
 				$('#chart_cat_'+id_budget).show();
-				$('div[data-id_budget=' + id_budget + ']').find('.reporting-budget-showmorelink').html('Masquer détails');
+				$('div[data-id_budget=' + id_budget + ']').find('.reporting-budget-showmorelink').html('<?php echo _("Hide details"); ?>');
 				sync_column_width('#table_transac_header','#table_transac');
 				$('.scrollable').getNiceScroll().resize();
 			}

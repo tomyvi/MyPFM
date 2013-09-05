@@ -22,7 +22,7 @@
 				width: 450,
 				modal: true,
 				buttons: {
-					"OK": function() {
+					"<?php echo _("Add"); ?>": function() {
 						
 						t_date = $('#t_add_date').val();
 						t_libelle = ($('#t_add_lib').val());
@@ -36,17 +36,17 @@
 						//verification des données
 						error = false;
 						if(t_date == ""){
-							alert('Merci de selectionner une date !!');
+							alert('<?php echo _("Please fill in a transaction date"); ?> !!');
 							$('#t_add_date').focus();
 							return;
 						}
 						if(t_libelle == ""){
-							alert('Merci de saisir un libelle !!');
+							alert('<?php echo _("Please fill in a transaction label"); ?> !!');
 							$('#t_add_lib').focus();
 							return;
 						}
 						if(t_montant == ""){
-							alert('Merci de saisir un montant !!');
+							alert('<?php echo _("Please fill in a transaction amount"); ?> !!');
 							$('#t_add_montant').focus();
 							return;
 						}
@@ -82,7 +82,7 @@
 											layout: 'top',
 											type: 'warning',
 											timeout: 3000,
-											text: 'La transaction existe déjà, impossible de la dupliquer !'
+											text: '<?php echo _("Transaction already exists, unable to duplicate"); ?> !'
 										});
 										
 									}else if(data.transaction != null){
@@ -102,7 +102,7 @@
 							
 						}
 					},
-					"Annuler": function() {
+					"<?php echo _("Cancel"); ?>": function() {
 						$( '#dialog-add-transac' ).dialog( "close" );
 					}
 				},
@@ -128,30 +128,30 @@
 			
 		});
 	</script>
-	<div id="dialog-add-transac" title="Ajouter une transaction" class="dialog">
+	<div id="dialog-add-transac" title="<?php echo _("Add transaction"); ?>" class="dialog">
 
 		<form>
-			<p>Veuillez saisir les informations pour la transaction :</p>
+			<p><?php echo _("Please fill in transaction details"); ?> :</p>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_add_lib">Libell&eacute; :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_add_lib"><?php echo _("Label"); ?> :</label></div>
 				<div class="diag_champ"><input name="t_add_lib" id="t_add_lib" size="45" maxlength="255"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_add_comm">Commentaire :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_add_comm"><?php echo _("Comment"); ?> :</label></div>
 				<div class="diag_champ"><input name="t_add_comm" id="t_add_comm" size="45" maxlength="255"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_add_date">Date :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_add_date"><?php echo _("Date"); ?> :</label></div>
 				<div class="diag_champ"><input name="t_add_date" id="t_add_date" size="10"></div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_add_montant">Montant :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_add_montant"><?php echo _("Amount"); ?> :</label></div>
 				<div class="diag_champ"><input name="t_add_montant" id="t_add_montant" size="8" alt="montant_msk"> &#8364;</div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_add_idcat">Cat&eacute;gorie :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_add_idcat"><?php echo _("Category"); ?> :</label></div>
 				<div class="diag_champ">
-					<select data-placeholder="Catégorie..." name="t_add_idcat" id="t_add_idcat" class="uniform">
+					<select data-placeholder="<?php echo _("Category"); ?>..." name="t_add_idcat" id="t_add_idcat" class="uniform">
 						<?php 
 							foreach(Categorie::getListe() as $cat){
 								if($cat->id==0){
@@ -162,13 +162,13 @@
 								echo "<option value='".$cat->id."' $selected>".htmlentities($cat->nom)."</option>\n";
 							}
 						?>
-					</select> <i>(facultatif)</i>
+					</select> <i>(<?php echo _("optional"); ?>)</i>
 				</div>
 			</div>
 			<div class="diag_ligne">
-				<div class="diag_libelle align_droite"><label for="t_add_idbudget">Budget :</label></div>
+				<div class="diag_libelle align_droite"><label for="t_add_idbudget"><?php echo _("Budget"); ?> :</label></div>
 				<div class="diag_champ">
-					<select data-placeholder="Budget..." name="t_add_idbudget" id="t_add_idbudget" class="uniform">
+					<select data-placeholder="<?php echo _("Budget"); ?>..." name="t_add_idbudget" id="t_add_idbudget" class="uniform">
 						<option></option>
 						<?php 
 
@@ -180,9 +180,9 @@
 
 						?>
 
-					</select> <i>(facultatif)</i>
+					</select> <i>(<?php echo _("optional"); ?>)</i>
 				</div>
 			</div>
-			<span id="loading_spin_addtransac" ><img src="./img/ajax-loader-spinner.gif" /> Chargement en cours...</span>
+			<span id="loading_spin_addtransac" ><img src="./img/ajax-loader-spinner.gif" /> <?php echo _("Loading in progress"); ?>...</span>
 		</form>
 	</div>
