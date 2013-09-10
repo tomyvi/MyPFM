@@ -56,7 +56,7 @@
 							t_date = deformat_date(t_date);
 							
 							t_id_transac = 'NEWID_' + Math.floor(Math.random()*111111);
-							transaction = {id:t_id_transac, date_transaction:t_date, libelle:t_libelle, categorie:{nom:t_lib_categorie, id:t_id_categorie}, montant:t_montant};
+							transaction = {id:t_id_transac, date_transaction:t_date, libelle:t_libelle, categorie:{nom:t_lib_categorie, id:t_id_categorie}, montant:t_montant, id_budget:t_id_budget};
 					
 							$( '#dialog-add-transac' ).dialog( "close" );
 							prepend_transaction(transaction);

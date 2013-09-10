@@ -62,6 +62,7 @@ if($_GET){
 			$t->libelle = ($libelle);
 			$t->commentaire = ($commentaire);
 			$t->id_categorie = $id_categorie;
+			$t->id_budget = $id_budget;
 			$t->montant = $montant;
 			$t->devise = "EUR";
 			$t->id_import = $id_import;
