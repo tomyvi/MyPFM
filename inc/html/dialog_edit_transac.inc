@@ -112,7 +112,7 @@
 						});
 					}
 				},
-				"Supprimer": function() {
+				"<?php echo _("Delete"); ?>": function() {
 					t_id_transac = $('#t_edit_id_transac').val();
 					id_compte = $('.actif').data('id');
 					if (confirm('<?php echo _("Do you really want to delete transaction"); ?> ?')) {

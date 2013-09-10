@@ -115,7 +115,7 @@
 					},
 					"Supprimer": function() {
 						
-						if(confirm("<?php echo _("Do you really want to delete this account ?\n(All transactions will be erased)"); ?>")){
+						if(confirm("<?php echo _("Do you really want to delete this account ?\\n(All transactions will be erased)"); ?>")){
 							t_cpt_id = $('#t_edit_cpt_id').val();
 							compte = {id:t_cpt_id};
 							

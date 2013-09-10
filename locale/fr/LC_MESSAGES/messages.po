@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MyPFM\n"
-"POT-Creation-Date: 2013-09-05 16:28+0100\n"
-"PO-Revision-Date: 2013-09-10 10:30+0100\n"
+"POT-Creation-Date: 2013-09-10 11:33+0100\n"
+"PO-Revision-Date: 2013-09-10 11:33+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -65,7 +65,7 @@ msgstr "Atterrissage M+1"
 msgid "Loading your accounts, please wait"
 msgstr "Chargement de vos comptes, veuillez patienter"
 
-#: display.php:39 report_budgets.php:158 inc/html/dialog_edit_budget.inc:1
+#: display.php:39 report_budgets.php:158 inc/html/dialog_edit_budget.inc:49
 #: inc/html/dialog_edit_cpt.inc:41 inc/html/dialog_edit_transac.inc:54
 msgid "Edit"
 msgstr "Modifier"
@@ -76,7 +76,7 @@ msgstr "Importer"
 
 #: display.php:48 inc/html/dialog_add_budget.inc:73
 #: inc/html/dialog_add_cpt.inc:81 inc/html/dialog_add_transac.inc:105
-#: inc/html/dialog_edit_budget.inc:1 inc/html/dialog_edit_cpt.inc:154
+#: inc/html/dialog_edit_budget.inc:123 inc/html/dialog_edit_cpt.inc:154
 #: inc/html/dialog_edit_transac.inc:148 inc/html/dialog_import_transac.inc:1
 msgid "Cancel"
 msgstr "Annuler"
@@ -114,7 +114,7 @@ msgstr "Catégorie"
 
 #: display.php:65 report_budgets.php:136 report_graphs.php:697
 #: inc/html/dialog_add_budget.inc:96 inc/html/dialog_add_transac.inc:148
-#: inc/html/dialog_edit_budget.inc:1 inc/html/dialog_edit_transac.inc:204
+#: inc/html/dialog_edit_budget.inc:148 inc/html/dialog_edit_transac.inc:204
 #: inc/html/dialog_handle_duplicates.inc:178
 #: inc/html/dialog_handle_duplicates.inc:198
 msgid "Amount"
@@ -323,7 +323,7 @@ msgstr "Balance globale"
 msgid "Add"
 msgstr "Ajouter"
 
-#: inc/html/dialog_add_budget.inc:43 inc/html/dialog_edit_budget.inc:1
+#: inc/html/dialog_add_budget.inc:43 inc/html/dialog_edit_budget.inc:62
 msgid "Please fill in a budget name"
 msgstr "Veuillez saisir un nom pour le budget"
 
@@ -339,20 +339,20 @@ msgstr "Créer un nouveau budget"
 msgid "Please fill in budget data"
 msgstr "Veuillez saisir les informations pour le budget"
 
-#: inc/html/dialog_add_budget.inc:92 inc/html/dialog_edit_budget.inc:1
+#: inc/html/dialog_add_budget.inc:92 inc/html/dialog_edit_budget.inc:144
 msgid "Name"
 msgstr "Nom"
 
-#: inc/html/dialog_add_budget.inc:100 inc/html/dialog_edit_budget.inc:1
+#: inc/html/dialog_add_budget.inc:100 inc/html/dialog_edit_budget.inc:152
 msgid "Active"
 msgstr "Actif"
 
-#: inc/html/dialog_add_budget.inc:104 inc/html/dialog_edit_budget.inc:1
+#: inc/html/dialog_add_budget.inc:104 inc/html/dialog_edit_budget.inc:156
 msgid "Display in statistics"
 msgstr "Afficher dans les statistiques"
 
 #: inc/html/dialog_add_budget.inc:107 inc/html/dialog_add_cpt.inc:149
-#: inc/html/dialog_add_transac.inc:186 inc/html/dialog_edit_budget.inc:1
+#: inc/html/dialog_add_transac.inc:186 inc/html/dialog_edit_budget.inc:159
 #: inc/html/dialog_edit_cpt.inc:227 inc/html/dialog_edit_transac.inc:243
 msgid "Loading in progress"
 msgstr "Chargement"
@@ -439,23 +439,23 @@ msgstr "facultatif"
 msgid "Budget"
 msgstr "Budget"
 
-#: inc/html/dialog_edit_budget.inc:1
+#: inc/html/dialog_edit_budget.inc:89 inc/html/dialog_edit_budget.inc:116
 msgid "Error while updating budget"
 msgstr "Erreur lors de la modification du budget"
 
-#: inc/html/dialog_edit_budget.inc:1
+#: inc/html/dialog_edit_budget.inc:96
 msgid ""
-"Do you really want to delete budget ?\n"
-"(All transaction affected to this budget will not be deleted but unaffected)"
+"Do you really want to delete budget ?\\n(All transaction affected to this "
+"budget will not be deleted but unaffected)"
 msgstr ""
 "Etes vous sûr de vouloir supprimer ce budget ?\\n(Toutes les transactions "
 "affectées à ce budget ne seront pas supprimées mais non affectées)"
 
-#: inc/html/dialog_edit_budget.inc:1
+#: inc/html/dialog_edit_budget.inc:138
 msgid "Edit budget"
 msgstr "Modifier un budget"
 
-#: inc/html/dialog_edit_budget.inc:1
+#: inc/html/dialog_edit_budget.inc:141
 msgid "Please fill in budget details"
 msgstr "Veuillez saisir les informations pour le budget"
 
@@ -469,8 +469,8 @@ msgstr "a bien été mis à jour"
 
 #: inc/html/dialog_edit_cpt.inc:118
 msgid ""
-"Do you really want to delete this account ?\n"
-"(All transactions will be erased)"
+"Do you really want to delete this account ?\\n(All transactions will be "
+"erased)"
 msgstr ""
 "Etes vous sûr de vouloir supprimer ce compte ?\\n(Toutes les transactions "
 "pour ce compte seront également supprimées)"
@@ -486,6 +486,10 @@ msgstr "Editer le compte"
 #: inc/html/dialog_edit_cpt.inc:220
 msgid "Closed"
 msgstr "Compte clot"
+
+#: inc/html/dialog_edit_transac.inc:115
+msgid "Delete"
+msgstr "Supprimer"
 
 #: inc/html/dialog_edit_transac.inc:118
 msgid "Do you really want to delete transaction"
