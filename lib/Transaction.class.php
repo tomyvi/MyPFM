@@ -123,7 +123,8 @@ class Transaction{
 			throw new MyException('Invalid query: '.$q . mysql_error());
 		}
 		
-		if($this->id_budget != 0) Budget::actualiserSolde();
+		if($this->id_budget != 0){$this->getBudget()->actualiserSolde();}
+		
 		$this->getCompte()->actualiserSolde();
 		
 		$this->date_maj = date("Y-m-d");

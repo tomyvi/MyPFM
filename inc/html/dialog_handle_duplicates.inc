@@ -133,10 +133,10 @@
 												layout: 'top',
 												type: 'warning',
 												timeout: 10000,
-												text: nb_error + ' <?php echo _("error(s) when adding transactions"). ?> (<?php echo _("Last error message"); ?> : '+ data.error +') !'
+												text: nb_error + ' <?php echo _("error(s) when adding transactions"); ?> (<?php echo _("Last error message"); ?> : '+ data.error +') !'
 											});
 										}else{
-											noty_ko.setText(nb_error + ' <?php echo _("error(s) when adding transactions"). ?> (<?php echo _("Last error message"); ?> : '+ data.error +') !');
+											noty_ko.setText(nb_error + ' <?php echo _("error(s) when adding transactions"); ?> (<?php echo _("Last error message"); ?> : '+ data.error +') !');
 										}
 									}					
 								}

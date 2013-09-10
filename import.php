@@ -75,13 +75,13 @@ switch($_FILES['file']['type']){
 		break;
 	case 'application/octet-stream':
 	case 'application/x-ecriture-qif':
-		if(strtolower(end(explode('.', $_FILES['file']['name']))) == 'qif'){
+		//if(strtolower(end(explode('.', $_FILES['file']['name']))) == 'qif'){
 			$file_type = 'QIF';
-		}if(strtolower(end(explode('.', $_FILES['file']['name']))) == 'csv'){
-			$file_type = 'CSV';
-		}else{
+		//}if(strtolower(end(explode('.', $_FILES['file']['name']))) == 'csv'){
+		//	$file_type = 'CSV';
+		//}else{
 			
-		}
+		//}
 		
 		break;
 	default :

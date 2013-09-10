@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MyPFM\n"
 "POT-Creation-Date: 2013-09-05 16:28+0100\n"
-"PO-Revision-Date: 2013-09-05 16:28+0100\n"
+"PO-Revision-Date: 2013-09-10 10:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -448,9 +448,8 @@ msgid ""
 "Do you really want to delete budget ?\n"
 "(All transaction affected to this budget will not be deleted but unaffected)"
 msgstr ""
-"Etes vous sûr de vouloir supprimer ce budget ?\n"
-"(Toutes les transactions affectées à ce budget ne seront pas supprimées mais "
-"non affectées)"
+"Etes vous sûr de vouloir supprimer ce budget ?\\n(Toutes les transactions "
+"affectées à ce budget ne seront pas supprimées mais non affectées)"
 
 #: inc/html/dialog_edit_budget.inc:1
 msgid "Edit budget"
@@ -473,8 +472,8 @@ msgid ""
 "Do you really want to delete this account ?\n"
 "(All transactions will be erased)"
 msgstr ""
-"Etes vous sûr de vouloir supprimer ce compte ?\n"
-"(Toutes les transactions pour ce compte seront également supprimées)"
+"Etes vous sûr de vouloir supprimer ce compte ?\\n(Toutes les transactions "
+"pour ce compte seront également supprimées)"
 
 #: inc/html/dialog_edit_cpt.inc:137
 msgid "The account has been deleted"
@@ -515,7 +514,7 @@ msgstr "Impossible de mettre à jour la catégorie"
 #: inc/html/dialog_edit_transaccat.inc:118
 #: inc/html/dialog_edit_transaccat.inc:122
 msgid "Error while updating category sort order"
-msgstr "Erreur lors de la mise à jour de l'ordre des catégories"
+msgstr "Erreur lors de la mise à jour de l\\'ordre des catégories"
 
 #: inc/html/dialog_edit_transaccat.inc:131
 msgid "Select new category"
@@ -660,7 +659,7 @@ msgstr "Montant, catégorie ou libellé,..."
 
 #: inc/html/login.inc:7
 msgid "Please fill in your login"
-msgstr "Veuillez saisir votre nom d'utilisateur"
+msgstr "Veuillez saisir votre nom d\\'utilisateur"
 
 #: inc/html/login.inc:13
 msgid "Please fill in your password"
