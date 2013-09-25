@@ -14,6 +14,7 @@ try{
 }
 
 try{
+	$c->actualiserSolde();
 	if($c->is_synthese){
 		$c->setTransactionsFutures();
 	}
