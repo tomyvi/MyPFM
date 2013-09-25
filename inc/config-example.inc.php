@@ -7,5 +7,4 @@ $_config['mysql_pwd'] = '';
 
 $_config['nb_transac_par_page'] = 30;
 $_config['table_prefix'] = 'cpt_';
-$_config['lang'] = 'fr';
 ?>

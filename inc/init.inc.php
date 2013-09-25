@@ -4,10 +4,16 @@ require_once(dirname(__FILE__) . "/config.inc.php");
 require_once(dirname(__FILE__) . "/fonctions.inc.php");
 
 
+
+$accept_language = explode(',',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
+$default_lang = $accept_language[0];
+
+
 // Locale setup
-if (!defined('LC_MESSAGES')) define('LC_MESSAGES', 6);
-putenv("LANG=".$_config['lang']);
-setlocale(LC_ALL, $_config['lang']);
+define('LC_MESSAGES', 6);
+putenv("LANG=".$default_lang);
+setlocale(LC_ALL, $default_lang);
+
 $domain = "messages";
 bindtextdomain($domain, "./locale");
 bind_textdomain_codeset($domain, 'UTF-8');
