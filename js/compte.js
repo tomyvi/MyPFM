@@ -25,6 +25,8 @@ function get_listeComptes(){
 	
 }
 
+
+var compte_clos_loaded = false;
 function get_comptes_clos(){
 	
 	$('.lien_afficher_cpt_clos').html("<img src='./images/ajax-loader-spinner.gif' /> Chargement...");
@@ -46,6 +48,7 @@ function get_comptes_clos(){
 				
 				
 			}
+			compte_clos_loaded = true;
 			set_listecomptes_bindings();
 			$('.lien_afficher_cpt_clos').html('');
 			$('.liste_comptes').animate({ scrollTop: $('.liste_comptes').height() }, 'slow');
@@ -68,6 +71,11 @@ function get_compte(id){
 	
 	$.getJSON('./rpc.php?type=GET_CPT&idc=' + id, function(compte){
 		console.log('Reçu compte libelle ' + compte.libelle);
+		
+		//si compte clot, chargement dans la liste des comptes clos
+		if(compte.cloture == 1 && compte_clos_loaded == false){
+			get_comptes_clos();
+		}
 		
 		//changement de compte actif
 		$(".actif").removeClass('actif');
