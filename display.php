@@ -36,7 +36,7 @@ require_once(dirname(__FILE__) . '/inc/html/account_list.inc');
 	<div class="sstitre_compte">
 		<a href="#" target="_blank" id="etablissement">...</a>
 		- <span id="numero_compte">...</span>
-		<span class="lien" id="lien_edit_cpt"> - <?php echo _("Edit"); ?></span>
+		<span class="lien" id="lien_edit_cpt" title="Alt+e"> - <?php echo _("Edit"); ?></span>
 	</div>
 	<div class="sstitre_compte align_droite">
 		<span  style="display:inline;opacity:0;width:1px;overflow:hidden;">
@@ -112,15 +112,13 @@ require_once(dirname(__FILE__) . '/inc/html/account_list.inc');
 				
 				cle_compte = location.hash.replace('#', '');
 				id_compte = $("li.compte[data-cle='" + cle_compte + "']").data('id');
-				
 				if(id_compte == '' || id_compte == null) id_compte = default_id_compte;
 				
 				$.when(get_compte(id_compte)).done(function(a4, a5){
-					console.log("Load complete, display !");
 					$('.attente_container').hide();
 					$('.comptes_container').show();
-					sync_column_width('.table_header','.table_content');
-					
+					$('.liste_comptes').animate({ scrollTop: $("li[data-id=" + id_compte + "]").position().top - $('.liste_comptes').position().top }, 'slow');
+					sync_column_width('.table_header','.table_content');					
 				});
 			});
 			

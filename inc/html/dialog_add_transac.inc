@@ -1,6 +1,10 @@
 <script>
 		
 		$(document).ready(function(){
+			keypress.combo("alt c", function() {
+				$('#lien_add_transac').click();
+			});
+			
 			$('#lien_add_transac').click(function(){
 				$('#dialog-add-transac').dialog('open');
 				$('input:text').setMask();

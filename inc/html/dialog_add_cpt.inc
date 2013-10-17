@@ -1,5 +1,9 @@
 <script>		
 		$(document).ready(function(){
+			keypress.combo("alt shift c", function() {
+				$('#lien_add_cpt').click();
+			});
+			
 			$('#lien_add_cpt').click(function(){
 				$('#dialog-add-cpt').dialog('open');				
 			});

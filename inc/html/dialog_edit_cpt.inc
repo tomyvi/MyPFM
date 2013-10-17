@@ -1,7 +1,11 @@
 <script>
 		
 		$(document).ready(function(){
-		
+			
+			keypress.combo("alt e", function() {
+				$('#lien_edit_cpt').click();
+			});
+			
 			$('#lien_edit_cpt').click(function(){
 				$('#dialog-edit-cpt').dialog('open');
 				$.ajax({

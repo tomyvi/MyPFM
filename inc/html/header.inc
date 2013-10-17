@@ -23,7 +23,7 @@
 <script src='./js/plugins.js'></script>
 <script src='./js/compte.js'></script>
 <script src='./js/transaction.js'></script>
-<script src='./js/hotkeys.js'></script>
+<script src='./js/keypress-1.0.8.min.js'></script>
 <script src='./js/my_php.js'></script>
 </head>
 <body>
@@ -41,10 +41,10 @@
 			<a href="./display.php"><?php echo _("Expenses & Incomes"); ?></a>
 			<ul>
 				<li><a href="./display.php"><?php echo _("Account list"); ?></a></li>
-				<li><a href="javascript:void(0);" id="lien_add_cpt"><?php echo _("Add new account"); ?></a></li>
+				<li><a href="javascript:void(0);" id="lien_add_cpt" title="Alt+Shift+c"><?php echo _("Add new account"); ?></a></li>
 				<?php 
 				if ($_AFFICHER_COMPTE) {
-					?><li><a href="javascript:void(0);" id="lien_add_transac"><?php echo _("Add new transaction"); ?></a></li><?php
+					?><li><a href="javascript:void(0);" id="lien_add_transac" title="Alt+c"><?php echo _("Add new transaction"); ?></a></li><?php
 				}
 				?>
 				
