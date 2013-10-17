@@ -68,7 +68,7 @@
 			 } ?>
 			</center></div>
 			<div class="row"><center>
-				<input type="button" value="<?php echo _("Login"); ?>" tabindex="3"/>
+				<input type="button" value="<?php echo _("Log in"); ?>" tabindex="3"/>
 			</center></div>
 		</div>
 	</form>

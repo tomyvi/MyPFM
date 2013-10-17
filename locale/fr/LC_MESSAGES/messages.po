@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MyPFM\n"
-"POT-Creation-Date: 2013-09-10 11:33+0100\n"
-"PO-Revision-Date: 2013-09-10 11:33+0100\n"
+"POT-Creation-Date: 2013-09-25 15:55+0100\n"
+"PO-Revision-Date: 2013-09-25 15:56+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -77,7 +77,7 @@ msgstr "Importer"
 #: display.php:48 inc/html/dialog_add_budget.inc:73
 #: inc/html/dialog_add_cpt.inc:81 inc/html/dialog_add_transac.inc:105
 #: inc/html/dialog_edit_budget.inc:123 inc/html/dialog_edit_cpt.inc:154
-#: inc/html/dialog_edit_transac.inc:148 inc/html/dialog_import_transac.inc:1
+#: inc/html/dialog_edit_transac.inc:148 inc/html/dialog_import_transac.inc:243
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -148,7 +148,7 @@ msgstr "Impossible de supprimer la transaction"
 msgid "transaction(s) imported"
 msgstr "transaction(s) importée(s)"
 
-#: import.php:178 import.php:304 update_futures.php:23
+#: import.php:178 import.php:304 update_futures.php:24
 msgid "Error when updating account data"
 msgstr "Erreur à l'actualisation des données du compte"
 
@@ -302,7 +302,7 @@ msgstr "Compte"
 msgid "Loading transactions"
 msgstr "Chargement des transactions"
 
-#: inc/init.inc.php:20
+#: inc/init.inc.php:26
 msgid "Could not connect"
 msgstr "Impossible de se connecter"
 
@@ -443,6 +443,10 @@ msgstr "Budget"
 msgid "Error while updating budget"
 msgstr "Erreur lors de la modification du budget"
 
+#: inc/html/dialog_edit_budget.inc:94 inc/html/dialog_edit_transac.inc:115
+msgid "Delete"
+msgstr "Supprimer"
+
 #: inc/html/dialog_edit_budget.inc:96
 msgid ""
 "Do you really want to delete budget ?\\n(All transaction affected to this "
@@ -486,10 +490,6 @@ msgstr "Editer le compte"
 #: inc/html/dialog_edit_cpt.inc:220
 msgid "Closed"
 msgstr "Compte clot"
-
-#: inc/html/dialog_edit_transac.inc:115
-msgid "Delete"
-msgstr "Supprimer"
 
 #: inc/html/dialog_edit_transac.inc:118
 msgid "Do you really want to delete transaction"
@@ -556,39 +556,40 @@ msgstr "Veuillez cocher les lignes à importer"
 msgid "Existing transactions list"
 msgstr "Liste des transactions existantes"
 
-#: inc/html/dialog_import_transac.inc:1
+#: inc/html/dialog_import_transac.inc:63
 msgid "Operation canceled"
 msgstr "Opération annulée"
 
-#: inc/html/dialog_import_transac.inc:1
+#: inc/html/dialog_import_transac.inc:74
 msgid "Uploading file"
 msgstr "Envoi du fichier"
 
-#: inc/html/dialog_import_transac.inc:1
+#: inc/html/dialog_import_transac.inc:99
 msgid "Processing file"
 msgstr "Traitement du fichier"
 
-#: inc/html/dialog_import_transac.inc:1
+#: inc/html/dialog_import_transac.inc:118
 msgid "transactions(s) have been imported"
 msgstr "transaction(s) ont été importées "
 
-#: inc/html/dialog_import_transac.inc:1
+#: inc/html/dialog_import_transac.inc:122
 msgid "Processing duplicated"
 msgstr "Traitement des doublons"
 
-#: inc/html/dialog_import_transac.inc:1
+#: inc/html/dialog_import_transac.inc:145
+#: inc/html/dialog_import_transac.inc:148
 msgid "transaction(s) already exist, impossible to duplicate them"
 msgstr "transaction(s) existent déjà, impossible de les dupliquer"
 
-#: inc/html/dialog_import_transac.inc:1
+#: inc/html/dialog_import_transac.inc:206
 msgid "Import has successfully been canceled"
 msgstr "L\\'import a bien été annulé"
 
-#: inc/html/dialog_import_transac.inc:1
+#: inc/html/dialog_import_transac.inc:206
 msgid "transaction(s) deleted"
 msgstr "transaction(s) supprimée(s)"
 
-#: inc/html/dialog_import_transac.inc:1
+#: inc/html/dialog_import_transac.inc:227
 msgid "Transaction import"
 msgstr "Import de transactions"
 
@@ -669,10 +670,14 @@ msgstr "Veuillez saisir votre nom d\\'utilisateur"
 msgid "Please fill in your password"
 msgstr "Veuillez saisir votre mot de passe"
 
-#: inc/html/login.inc:56 inc/html/login.inc:71
+#: inc/html/login.inc:56
 msgid "Login"
 msgstr "Nom d'utilisateur"
 
 #: inc/html/login.inc:60
 msgid "Password"
 msgstr "Mot de passe"
+
+#: inc/html/login.inc:71
+msgid "Log in"
+msgstr "Se connecter"
