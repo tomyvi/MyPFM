@@ -214,7 +214,7 @@
 			</div>
 			<div class="diag_ligne">
 				<div class="diag_libelle align_droite"><label for="t_edit_cpt_no"><?php echo _("Account number"); ?> :</label></div>
-				<div class="diag_champ"><input name="t_edit_cpt_no" id="t_edit_cpt_no" size="45" maxlength="26"></div>
+				<div class="diag_champ"><input name="t_edit_cpt_no" id="t_edit_cpt_no" size="45" maxlength="255"></div>
 			</div>
 			<div class="diag_ligne">
 				<div class="diag_libelle align_droite"><label for="t_edit_cpt_soldeouv"><?php echo _("Opening balance"); ?> :</label></div>
