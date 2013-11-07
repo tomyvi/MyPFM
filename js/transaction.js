@@ -85,6 +85,11 @@ function prepend_transaction(transaction){
 	update_compte_data(compte);
 	
 	
+	if(solde_cpt >= 0){
+		t_solde = "+"+number_format(solde_cpt);
+	}else{
+		t_solde = number_format(solde_cpt);
+	}
 	
 	if(transaction.montant > 0){
 		class_montant = 'credit signe';

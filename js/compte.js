@@ -189,9 +189,6 @@ function update_compte_data(compte, initial){
 		if(compte.solde_courant == null){
 			old_solde_courant = eval($('#solde_cpt').data('solde_cpt'));
 			compte.solde_courant = old_solde_courant + eval(compte.solde_ouverture) - old_solde_ouverture;
-			console.log("Ancien solde courant = " + old_solde_courant);
-			console.log("Nouveau solde courant = " + compte.solde_courant);
-		
 		}
 		
 	}
@@ -217,7 +214,9 @@ function update_compte_data(compte, initial){
 		}
 		
 		//modification du total ptf
-		solde_global = solde_global - old_solde_courant + compte.solde_courant;
+		console.log("Ancien solde courant = " + old_solde_courant);
+		console.log("Nouveau solde courant = " + compte.solde_courant);
+		solde_global = $('#solde_global').data('solde_global') - old_solde_courant + compte.solde_courant;
 		if(! initial) update_solde_global(solde_global);
 		
 	}
