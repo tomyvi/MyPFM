@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MyPFM\n"
-"POT-Creation-Date: 2013-09-25 15:55+0100\n"
-"PO-Revision-Date: 2013-09-25 15:56+0100\n"
+"POT-Creation-Date: 2013-11-07 18:04+0100\n"
+"PO-Revision-Date: 2013-11-07 18:04+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -65,8 +65,7 @@ msgstr "Atterrissage M+1"
 msgid "Loading your accounts, please wait"
 msgstr "Chargement de vos comptes, veuillez patienter"
 
-#: display.php:39 report_budgets.php:158 inc/html/dialog_edit_budget.inc:49
-#: inc/html/dialog_edit_cpt.inc:41 inc/html/dialog_edit_transac.inc:54
+#: display.php:39 report_budgets.php:158
 msgid "Edit"
 msgstr "Modifier"
 
@@ -75,9 +74,9 @@ msgid "Import"
 msgstr "Importer"
 
 #: display.php:48 inc/html/dialog_add_budget.inc:73
-#: inc/html/dialog_add_cpt.inc:81 inc/html/dialog_add_transac.inc:105
-#: inc/html/dialog_edit_budget.inc:123 inc/html/dialog_edit_cpt.inc:154
-#: inc/html/dialog_edit_transac.inc:148 inc/html/dialog_import_transac.inc:243
+#: inc/html/dialog_add_cpt.inc:85 inc/html/dialog_add_transac.inc:109
+#: inc/html/dialog_edit_budget.inc:123 inc/html/dialog_edit_cpt.inc:158
+#: inc/html/dialog_edit_transac.inc:149 inc/html/dialog_import_transac.inc:243
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -90,31 +89,31 @@ msgid "Loading"
 msgstr "Chargement"
 
 #: display.php:61 report_budgets.php:132 report_graphs.php:694
-#: inc/html/dialog_add_transac.inc:144 inc/html/dialog_edit_transac.inc:196
+#: inc/html/dialog_add_transac.inc:148 inc/html/dialog_edit_transac.inc:197
 #: inc/html/dialog_handle_duplicates.inc:174
 #: inc/html/dialog_handle_duplicates.inc:194
 msgid "Date"
 msgstr "Date"
 
 #: display.php:63 report_budgets.php:134 report_graphs.php:695
-#: inc/html/dialog_add_cpt.inc:106 inc/html/dialog_add_transac.inc:136
-#: inc/html/dialog_edit_cpt.inc:180 inc/html/dialog_edit_transac.inc:180
+#: inc/html/dialog_add_cpt.inc:110 inc/html/dialog_add_transac.inc:140
+#: inc/html/dialog_edit_cpt.inc:184 inc/html/dialog_edit_transac.inc:181
 #: inc/html/dialog_handle_duplicates.inc:176
 #: inc/html/dialog_handle_duplicates.inc:196
 msgid "Label"
 msgstr "Libellé"
 
 #: display.php:64 report_budgets.php:135 report_graphs.php:696
-#: inc/html/dialog_add_transac.inc:152 inc/html/dialog_add_transac.inc:154
-#: inc/html/dialog_edit_transac.inc:211 inc/html/dialog_edit_transac.inc:214
+#: inc/html/dialog_add_transac.inc:156 inc/html/dialog_add_transac.inc:158
+#: inc/html/dialog_edit_transac.inc:212 inc/html/dialog_edit_transac.inc:215
 #: inc/html/dialog_handle_duplicates.inc:177
 #: inc/html/dialog_handle_duplicates.inc:197
 msgid "Category"
 msgstr "Catégorie"
 
 #: display.php:65 report_budgets.php:136 report_graphs.php:697
-#: inc/html/dialog_add_budget.inc:96 inc/html/dialog_add_transac.inc:148
-#: inc/html/dialog_edit_budget.inc:148 inc/html/dialog_edit_transac.inc:204
+#: inc/html/dialog_add_budget.inc:96 inc/html/dialog_add_transac.inc:152
+#: inc/html/dialog_edit_budget.inc:148 inc/html/dialog_edit_transac.inc:205
 #: inc/html/dialog_handle_duplicates.inc:178
 #: inc/html/dialog_handle_duplicates.inc:198
 msgid "Amount"
@@ -318,8 +317,8 @@ msgstr "Afficher les comptes clots"
 msgid "Global balance"
 msgstr "Balance globale"
 
-#: inc/html/dialog_add_budget.inc:31 inc/html/dialog_add_cpt.inc:23
-#: inc/html/dialog_add_transac.inc:25 inc/html/dialog_handle_duplicates.inc:94
+#: inc/html/dialog_add_budget.inc:31 inc/html/dialog_add_cpt.inc:27
+#: inc/html/dialog_add_transac.inc:29 inc/html/dialog_handle_duplicates.inc:94
 msgid "Add"
 msgstr "Ajouter"
 
@@ -351,99 +350,104 @@ msgstr "Actif"
 msgid "Display in statistics"
 msgstr "Afficher dans les statistiques"
 
-#: inc/html/dialog_add_budget.inc:107 inc/html/dialog_add_cpt.inc:149
-#: inc/html/dialog_add_transac.inc:186 inc/html/dialog_edit_budget.inc:159
-#: inc/html/dialog_edit_cpt.inc:227 inc/html/dialog_edit_transac.inc:243
+#: inc/html/dialog_add_budget.inc:107 inc/html/dialog_add_cpt.inc:153
+#: inc/html/dialog_add_transac.inc:190 inc/html/dialog_edit_budget.inc:159
+#: inc/html/dialog_edit_cpt.inc:231 inc/html/dialog_edit_transac.inc:244
 msgid "Loading in progress"
 msgstr "Chargement"
 
-#: inc/html/dialog_add_cpt.inc:39 inc/html/dialog_edit_cpt.inc:60
+#: inc/html/dialog_add_cpt.inc:43 inc/html/dialog_edit_cpt.inc:64
 msgid "Please fill in an account name"
 msgstr "Veuillez saisir un nom pour le compte"
 
-#: inc/html/dialog_add_cpt.inc:76
+#: inc/html/dialog_add_cpt.inc:80
 msgid "Error when creating account"
 msgstr "Erreur lors de la création du compte"
 
-#: inc/html/dialog_add_cpt.inc:100
+#: inc/html/dialog_add_cpt.inc:104
 msgid "Add account"
 msgstr "Ajouter un compte"
 
-#: inc/html/dialog_add_cpt.inc:104 inc/html/dialog_edit_cpt.inc:178
+#: inc/html/dialog_add_cpt.inc:108 inc/html/dialog_edit_cpt.inc:182
 msgid "Please fill in account details"
 msgstr "Veuillez saisir les informations pour le compte"
 
-#: inc/html/dialog_add_cpt.inc:110 inc/html/dialog_edit_cpt.inc:184
+#: inc/html/dialog_add_cpt.inc:114 inc/html/dialog_edit_cpt.inc:188
 msgid "Detailed label"
 msgstr "Libellé long"
 
-#: inc/html/dialog_add_cpt.inc:114 inc/html/dialog_edit_cpt.inc:188
+#: inc/html/dialog_add_cpt.inc:118 inc/html/dialog_edit_cpt.inc:192
 msgid "Bank"
 msgstr "Banque"
 
-#: inc/html/dialog_add_cpt.inc:118 inc/html/dialog_edit_cpt.inc:192
+#: inc/html/dialog_add_cpt.inc:122 inc/html/dialog_edit_cpt.inc:196
 msgid "URL"
 msgstr "URL"
 
-#: inc/html/dialog_add_cpt.inc:122 inc/html/dialog_edit_cpt.inc:196
+#: inc/html/dialog_add_cpt.inc:126 inc/html/dialog_edit_cpt.inc:200
 msgid "Account type"
 msgstr "Type de compte"
 
-#: inc/html/dialog_add_cpt.inc:138 inc/html/dialog_edit_cpt.inc:212
+#: inc/html/dialog_add_cpt.inc:142 inc/html/dialog_edit_cpt.inc:216
 msgid "Account number"
 msgstr "N° de compte"
 
-#: inc/html/dialog_add_cpt.inc:142 inc/html/dialog_edit_cpt.inc:216
+#: inc/html/dialog_add_cpt.inc:146 inc/html/dialog_edit_cpt.inc:220
 msgid "Opening balance"
 msgstr "Solde d'ouverture"
 
-#: inc/html/dialog_add_cpt.inc:146 inc/html/dialog_edit_cpt.inc:224
+#: inc/html/dialog_add_cpt.inc:150 inc/html/dialog_edit_cpt.inc:228
 msgid "Display in dashboard"
 msgstr "Afficher dans la synthèse"
 
-#: inc/html/dialog_add_transac.inc:39 inc/html/dialog_edit_transac.inc:69
+#: inc/html/dialog_add_transac.inc:43 inc/html/dialog_edit_transac.inc:70
 msgid "Please fill in a transaction date"
 msgstr "Veuillez saisir une date de transaction"
 
-#: inc/html/dialog_add_transac.inc:44 inc/html/dialog_edit_transac.inc:74
+#: inc/html/dialog_add_transac.inc:48 inc/html/dialog_edit_transac.inc:75
 msgid "Please fill in a transaction label"
 msgstr "Veuillez saisir un libellé de transaction"
 
-#: inc/html/dialog_add_transac.inc:49 inc/html/dialog_edit_transac.inc:79
+#: inc/html/dialog_add_transac.inc:53 inc/html/dialog_edit_transac.inc:80
 msgid "Please fill in a transaction amount"
 msgstr "Veuillez saisir un montant de transaction"
 
-#: inc/html/dialog_add_transac.inc:85
+#: inc/html/dialog_add_transac.inc:89
 msgid "Transaction already exists, unable to duplicate"
 msgstr "La transaction existe déjà, impossible de la dupliquer"
 
-#: inc/html/dialog_add_transac.inc:131
+#: inc/html/dialog_add_transac.inc:135
 msgid "Add transaction"
 msgstr "Ajouter une transaction"
 
-#: inc/html/dialog_add_transac.inc:134 inc/html/dialog_edit_transac.inc:177
+#: inc/html/dialog_add_transac.inc:138 inc/html/dialog_edit_transac.inc:178
 msgid "Please fill in transaction details"
 msgstr "Veuillez saisir les informations pour la transaction"
 
-#: inc/html/dialog_add_transac.inc:140 inc/html/dialog_edit_transac.inc:188
+#: inc/html/dialog_add_transac.inc:144 inc/html/dialog_edit_transac.inc:189
 msgid "Comment"
 msgstr "Commentaire"
 
-#: inc/html/dialog_add_transac.inc:165 inc/html/dialog_add_transac.inc:183
-#: inc/html/dialog_edit_transac.inc:220 inc/html/dialog_edit_transac.inc:236
+#: inc/html/dialog_add_transac.inc:169 inc/html/dialog_add_transac.inc:187
+#: inc/html/dialog_edit_transac.inc:221 inc/html/dialog_edit_transac.inc:237
 msgid "optional"
 msgstr "facultatif"
 
-#: inc/html/dialog_add_transac.inc:169 inc/html/dialog_add_transac.inc:171
-#: inc/html/dialog_edit_transac.inc:226 inc/html/dialog_edit_transac.inc:229
+#: inc/html/dialog_add_transac.inc:173 inc/html/dialog_add_transac.inc:175
+#: inc/html/dialog_edit_transac.inc:227 inc/html/dialog_edit_transac.inc:230
 msgid "Budget"
 msgstr "Budget"
+
+#: inc/html/dialog_edit_budget.inc:49 inc/html/dialog_edit_cpt.inc:45
+#: inc/html/dialog_edit_transac.inc:55
+msgid "Save"
+msgstr "Enregistrer"
 
 #: inc/html/dialog_edit_budget.inc:89 inc/html/dialog_edit_budget.inc:116
 msgid "Error while updating budget"
 msgstr "Erreur lors de la modification du budget"
 
-#: inc/html/dialog_edit_budget.inc:94 inc/html/dialog_edit_transac.inc:115
+#: inc/html/dialog_edit_budget.inc:94 inc/html/dialog_edit_transac.inc:116
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -463,15 +467,15 @@ msgstr "Modifier un budget"
 msgid "Please fill in budget details"
 msgstr "Veuillez saisir les informations pour le budget"
 
-#: inc/html/dialog_edit_cpt.inc:102
+#: inc/html/dialog_edit_cpt.inc:106
 msgid "The account"
 msgstr "Le compte"
 
-#: inc/html/dialog_edit_cpt.inc:102
+#: inc/html/dialog_edit_cpt.inc:106
 msgid "has been updated"
 msgstr "a bien été mis à jour"
 
-#: inc/html/dialog_edit_cpt.inc:118
+#: inc/html/dialog_edit_cpt.inc:122
 msgid ""
 "Do you really want to delete this account ?\\n(All transactions will be "
 "erased)"
@@ -479,31 +483,31 @@ msgstr ""
 "Etes vous sûr de vouloir supprimer ce compte ?\\n(Toutes les transactions "
 "pour ce compte seront également supprimées)"
 
-#: inc/html/dialog_edit_cpt.inc:137
+#: inc/html/dialog_edit_cpt.inc:141
 msgid "The account has been deleted"
 msgstr "Le compte a bien été supprimé"
 
-#: inc/html/dialog_edit_cpt.inc:174
+#: inc/html/dialog_edit_cpt.inc:178
 msgid "Edit account"
 msgstr "Editer le compte"
 
-#: inc/html/dialog_edit_cpt.inc:220
+#: inc/html/dialog_edit_cpt.inc:224
 msgid "Closed"
 msgstr "Compte clot"
 
-#: inc/html/dialog_edit_transac.inc:118
+#: inc/html/dialog_edit_transac.inc:119
 msgid "Do you really want to delete transaction"
 msgstr "Voulez vous vraiment supprimer la transaction"
 
-#: inc/html/dialog_edit_transac.inc:172
+#: inc/html/dialog_edit_transac.inc:173
 msgid "Edit transaction"
 msgstr "Editer la transaction"
 
-#: inc/html/dialog_edit_transac.inc:240
+#: inc/html/dialog_edit_transac.inc:241
 msgid "Import date"
 msgstr "Date d'import"
 
-#: inc/html/dialog_edit_transac.inc:241
+#: inc/html/dialog_edit_transac.inc:242
 msgid "Last update date"
 msgstr "Date de dernière mise à jour"
 

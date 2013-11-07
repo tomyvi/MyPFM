@@ -42,7 +42,7 @@
 				width: 470,
 				modal: true,
 				buttons: {
-					"<?php echo _("Edit"); ?>": function() {
+					"<?php echo _("Save"); ?>": function() {
 						
 						t_cpt_id = $('#t_edit_cpt_id').val();
 						t_cpt_lib = ($('#t_edit_cpt_lib').val());

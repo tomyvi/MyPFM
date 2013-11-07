@@ -52,7 +52,7 @@
 			width: 470,
 			modal: true,
 			buttons: {
-				"<?php echo _("Edit"); ?>": function() {
+				"<?php echo _("Save"); ?>": function() {
 					t_id_transac = $('#t_edit_id_transac').val();
 					t_id_compte = $('#t_edit_id_compte').val();
 					t_date = $('#t_edit_date').val();

@@ -46,7 +46,7 @@
 				width: 470,
 				modal: true,
 				buttons: {
-					"<?php echo _("Edit"); ?>": function() {
+					"<?php echo _("Save"); ?>": function() {
 						
 						b_id = $('#b_edit_id').val();
 						b_nom = $('#b_edit_nom').val();
