@@ -81,10 +81,10 @@ function prepend_transaction(transaction){
 	//solde global du compte
 	solde_cpt = Number(solde_cpt) + Number(transaction.montant);
 	if(solde_cpt >= 0){
-		t_solde = "+"+number_format(solde_cpt)+" &#8364;";
+		t_solde = "+"+number_format(solde_cpt);
 		$('#solde_cpt').removeClass('debit').addClass('credit signe');
 	}else{
-		t_solde = number_format(solde_cpt)+" &#8364;";
+		t_solde = number_format(solde_cpt);
 		$('#solde_cpt').removeClass('credit signe').addClass('debit');
 	}
 	t_solde_final = number_format(solde_cpt)+" &#8364;";
