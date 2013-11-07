@@ -364,7 +364,7 @@ class Compte {
 		
 		$this->solde_courant = $this->getSolde();
 		
-		$q = "UPDATE ".db_table_name('comptes')." SET solde_courant = $this->solde_courant WHERE id = $this->id AND id_utilisateur = ".$_SESSION["user_id"];
+		$q = "UPDATE ".db_table_name('comptes')." SET solde_courant = ".$this->solde_courant." WHERE id = ".$this->id." AND id_utilisateur = ".$_SESSION["user_id"];
 		
 		$res = mysql_query($q);
 
@@ -388,7 +388,7 @@ class Compte {
 	public function setOrdre($ordre){
 		$this->ordre = $ordre;
 		
-		$q = "UPDATE ".db_table_name('comptes')." SET ordre = $this->ordre WHERE id = $this->id AND id_utilisateur = ".$_SESSION["user_id"];
+		$q = "UPDATE ".db_table_name('comptes')." SET ordre = ".$this->ordre." WHERE id = ".$this->id." AND id_utilisateur = ".$_SESSION["user_id"];
 		$res = mysql_query($q);
 		if (!$res) {
     		throw new MyException('Invalid query: ' . mysql_error());
