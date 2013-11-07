@@ -19,17 +19,32 @@ function get_listeComptes(){
 			append_compte(compte);
 			
 		}
+		update_solde_global(solde_global);
 		set_listecomptes_bindings();
 		
 	});
 	
 }
 
+function update_solde_global(new_solde){
+	console.log("Nouveau solde global = " + new_solde);
+	$('#solde_global').data('solde_global', new_solde);
+	$('#solde_global').html(number_format(new_solde) + ' &#8364;');
+	
+	if(new_solde >= 0){
+		$('#solde_global').addClass('credit signe');
+		$('#solde_global').removeClass('debit');
+	}else{
+		$('#solde_global').removeClass('credit signe');
+		$('#solde_global').addClass('debit');
+	}
+}
+
 
 var compte_clos_loaded = false;
 function get_comptes_clos(){
 	
-	$('.lien_afficher_cpt_clos').html("<img src='./images/ajax-loader-spinner.gif' /> Chargement...");
+	$('.lien_afficher_cpt_clos').html("<img src='./img/ajax-loader-spinner.gif' /> Chargement...");
 			
 	$.ajax({
 		url: 'rpc.php?type=GET_LISTE_CPT_CLOS',
@@ -85,7 +100,7 @@ function get_compte(id){
 		$('#table_transac').data('nb_total_transactions_chargees',0);
 		
 		//mise à jour de l'interface
-		update_compte_data(compte);
+		update_compte_data(compte, true);
 		
 		$('div.liste_transactions').animate({ scrollTop: 0 }, 'slow');
 		
@@ -120,7 +135,7 @@ function get_compte(id){
 	});			
 }		
 
-function update_compte_data(compte){
+function update_compte_data(compte, initial){
 	//par defaut le compte mis à jour ne peut etre que le compte actif
 	compte.id = $('.actif').data('id');
 	
@@ -162,17 +177,18 @@ function update_compte_data(compte){
 	}
 	
 	if(compte.solde_ouverture != null){
-		old_solde_ouverture = Number($('#solde_cpt').data('solde_ouverture_cpt'));
+		old_solde_ouverture = eval($('#solde_cpt').data('solde_ouverture_cpt'));
 		console.log("Ancien solde ouverture = " + old_solde_ouverture);
 		console.log("Nouveau solde ouverture = " + compte.solde_ouverture);
 		$('#solde_cpt').data('solde_ouverture_cpt',compte.solde_ouverture);
+		
 		//modification du compte dans la liste
 		$('#cpt_'+compte.id).find('.solde_compte').data('solde_ouverture',compte.solde_ouverture);
 		
 		//si pas de nouveau solde courant envoyé, on le recalcule !
 		if(compte.solde_courant == null){
-			old_solde_courant = Number($('#solde_cpt').data('solde_cpt'));
-			compte.solde_courant = old_solde_courant + Number(compte.solde_ouverture) - old_solde_ouverture;
+			old_solde_courant = eval($('#solde_cpt').data('solde_cpt'));
+			compte.solde_courant = old_solde_courant + eval(compte.solde_ouverture) - old_solde_ouverture;
 			console.log("Ancien solde courant = " + old_solde_courant);
 			console.log("Nouveau solde courant = " + compte.solde_courant);
 		
@@ -181,7 +197,7 @@ function update_compte_data(compte){
 	}
 	
 	if(compte.solde_courant != null){
-		old_solde_courant = Number($('#solde_cpt').data('solde_cpt'));
+		old_solde_courant = eval($('#solde_cpt').data('solde_cpt'));
 		
 		$('#solde_cpt').data('solde_cpt',compte.solde_courant);
 		$('#solde_cpt').html(number_format(compte.solde_courant)+" &#8364;");
@@ -199,7 +215,11 @@ function update_compte_data(compte){
 		}else{
 			$('#cpt_'+compte.id).find('.solde_compte').removeClass('credit signe').addClass('debit');
 		}
-	
+		
+		//modification du total ptf
+		solde_global = solde_global - old_solde_courant + compte.solde_courant;
+		if(! initial) update_solde_global(solde_global);
+		
 	}
 	
 	if((compte.solde_ouverture != null && compte.solde_ouverture != old_solde_ouverture) || (compte.solde_courant != null && compte.solde_courant != old_solde_courant)){
@@ -212,20 +232,7 @@ function update_compte_data(compte){
 		$('#cpt_'+compte.id).find('.type_compte').data('id_type', compte.type.id);
 	}
 	
-	//mise à jour solde global du ptf 
-	/*
-	solde_global = Number($('#solde_global').data('solde_global'));
-	solde_global = solde_global + ecart_solde
 	
-	if(solde_global >= 0){
-		$('#solde_global').removeClass('debit').addClass('credit signe');
-	}else{
-		$('#solde_global').removeClass('credit signe').addClass('debit');
-	}
-	t_solde_global = number_format(solde_global)+" &#8364;";
-	$('#solde_global').html(t_solde_global);
-	$('#solde_global').data('solde_global', solde_global);
-	*/
 	
 	
 }
@@ -248,25 +255,14 @@ function append_compte(compte){
 		"</div>"+
 		"</li>");
 	
-	solde_global = solde_global + eval(compte.solde_courant);
-	solde_users[eval(compte.id_titulaire)] = solde_users[compte.id_titulaire] + eval(compte.solde_courant);
 	
-	if(compte.id_titulaire > 0) solde_users[compte.id_titulaire] = solde_users[compte.id_titulaire] + compte.solde_courant;
-		
+	solde_global = eval(solde_global) + eval(compte.solde_courant);
+	update_solde_global(solde_global);
+	
 	$('.scrollable').getNiceScroll().resize();
 	
 	//if(id_compte != 0) $('li[data-id=' + id_compte + ']').addClass('actif');
 	
-	$('#solde_global').data('solde_global', solde_global);
-	$('#solde_global').html(number_format(solde_global) + ' &#8364;');
-	
-	if(solde_global >= 0){
-		$('#solde_global').addClass('credit signe');
-		$('#solde_global').removeClass('debit');
-	}else{
-		$('#solde_global').removeClass('credit signe');
-		$('#solde_global').addClass('debit');
-	}
 }
 
 function prepend_compte(compte){
@@ -288,24 +284,11 @@ function prepend_compte(compte){
 		"</li>");
 	
 	solde_global = solde_global + eval(compte.solde_courant);
-	solde_users[eval(compte.id_titulaire)] = solde_users[compte.id_titulaire] + eval(compte.solde_courant);
-	
-	if(compte.id_titulaire > 0) solde_users[compte.id_titulaire] = solde_users[compte.id_titulaire] + compte.solde_courant;
+	update_solde_global(solde_global);
 		
 	$('.scrollable').getNiceScroll().resize();
 	
-	//if(id_compte != 0) $('li[data-id=' + id_compte + ']').addClass('actif');
 	
-	$('#solde_global').data('solde_global', solde_global);
-	$('#solde_global').html(number_format(solde_global) + ' &#8364;');
-	
-	if(solde_global >= 0){
-		$('#solde_global').addClass('credit signe');
-		$('#solde_global').removeClass('debit');
-	}else{
-		$('#solde_global').removeClass('credit signe');
-		$('#solde_global').addClass('debit');
-	}
 	
 }
 
@@ -316,23 +299,9 @@ function remove_compte(compte){
 		$('#cpt_'+compte.id).remove();
 		
 		solde_global = solde_global - eval(compte.solde_courant);
-		
-		if(compte.id_titulaire > 0) solde_users[compte.id_titulaire] = solde_users[compte.id_titulaire] - eval(compte.solde_courant);
+		update_solde_global(solde_global);
 			
 		$('.scrollable').getNiceScroll().resize();
-		
-		//if(id_compte != 0) $('li[data-id=' + id_compte + ']').addClass('actif');
-		
-		$('#solde_global').data('solde_global', solde_global);
-		$('#solde_global').html(number_format(solde_global) + ' &#8364;');
-		
-		if(solde_global >= 0){
-			$('#solde_global').addClass('credit signe');
-			$('#solde_global').removeClass('debit');
-		}else{
-			$('#solde_global').removeClass('credit signe');
-			$('#solde_global').addClass('debit');
-		}
 		
 		if(compte.id == default_id_compte){
 			default_id_compte = $('.liste_comptes').first('li').data('id');			

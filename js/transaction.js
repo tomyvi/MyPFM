@@ -80,49 +80,11 @@ function prepend_transaction(transaction){
 	
 	//solde global du compte
 	solde_cpt = Number(solde_cpt) + Number(transaction.montant);
-	if(solde_cpt >= 0){
-		t_solde = "+"+number_format(solde_cpt);
-		$('#solde_cpt').removeClass('debit').addClass('credit signe');
-	}else{
-		t_solde = number_format(solde_cpt);
-		$('#solde_cpt').removeClass('credit signe').addClass('debit');
-	}
-	t_solde_final = number_format(solde_cpt)+" &#8364;";
-	$('#solde_cpt').data('solde_cpt',solde_cpt);
-	$('#solde_cpt').html(t_solde_final);
+	
+	compte = {solde_courant:solde_cpt};
+	update_compte_data(compte);
 	
 	
-	//solde dans la liste des comptes
-	id_compte = $('.actif').data('id');
-	$('#solde_cpt_'+id_compte).data('solde_cpt', solde_cpt);
-	$('#solde_cpt_'+id_compte).html(t_solde_final);
-	
-	
-	//solde global du ptf de comptes
-	solde_global = Number(solde_global) + Number(transaction.montant);
-	if(solde_global >= 0){
-		$('#solde_global').removeClass('debit').addClass('credit signe');
-	}else{
-		$('#solde_global').removeClass('credit signe').addClass('debit');
-	}
-	t_solde_global = number_format(solde_global)+" &#8364;";
-	$('#solde_global').data('solde_global', t_solde_global);
-	$('#solde_global').html(t_solde_global);
-	
-	
-	//solde global user, si le compte est rattaché à un utilisateur
-	/*
-	if(id_user_cpt > 0){
-		solde_users[id_user_cpt] = Number(solde_users[id_user_cpt]) + Number(transaction.montant);
-		if(solde_users[id_user_cpt] > 0){
-			$('#solde_user_'+id_user_cpt).removeClass('debit').addClass('credit signe');
-		}else{
-			$('#solde_user_'+id_user_cpt).removeClass('credit signe').addClass('debit');
-		}
-		t_solde_user = number_format(solde_users[id_user_cpt])+" &#8364;";
-		$('#solde_user_'+id_user_cpt).html(t_solde_user);
-	}
-	*/
 	
 	if(transaction.montant > 0){
 		class_montant = 'credit signe';

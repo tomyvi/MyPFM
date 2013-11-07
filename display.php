@@ -31,7 +31,7 @@ require_once(dirname(__FILE__) . '/inc/html/account_list.inc');
 	<div class="entete_compte">
 	<div style="display:table-row">
 	<div class="titre_compte" id="libelle_compte">...</div>
-	<div class="titre_compte align_droite"><?php echo _("Balance on"); ?> <span id="date_max_transac_compte" data-date_max_transac_compte="0">...</span> : <span id="solde_cpt" class="credit">... #8364;</span></div>
+	<div class="titre_compte align_droite"><?php echo _("Balance on"); ?> <span id="date_max_transac_compte" data-date_max_transac_compte="0">...</span> : <span id="solde_cpt" data-solde_cpt="0" class="credit">... #8364;</span></div>
 	</div><div style="display:table-row">
 	<div class="sstitre_compte">
 		<a href="#" target="_blank" id="etablissement">...</a>

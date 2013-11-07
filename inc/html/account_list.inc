@@ -59,7 +59,7 @@
 	?>
 	
 	<div class='balances'>
-		<div class='balance'><?php echo _("Global balance"); ?> : <div class='' id='solde_global' data-solde_global=""></div></div>
+		<div class='balance'><?php echo _("Global balance"); ?> : <div class='' id='solde_global' data-solde_global="0"></div></div>
 		
 		<?php
 		
