@@ -7,7 +7,8 @@
 		
 		
 		$('.edit_transac_icon').hide();
-	
+		
+		$('.ligne_transac').unbind('hover');
 		$('.ligne_transac').hover(function() {
 			$(this).find('.edit_transac_icon').fadeIn(50);
 		}, function() {

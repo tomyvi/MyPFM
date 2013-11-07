@@ -93,6 +93,7 @@ function prepend_transaction(transaction){
 	
 	
 	//solde dans la liste des comptes
+	id_compte = $('.actif').data('id');
 	$('#solde_cpt_'+id_compte).data('solde_cpt', solde_cpt);
 	$('#solde_cpt_'+id_compte).html(t_solde_final);
 	
@@ -129,7 +130,7 @@ function prepend_transaction(transaction){
 		class_montant = 'debit';
 	}
 	
-	$('#table_transac').find('tbody').prepend("<tr id='"+transaction.id+"'>"+
+	$('#table_transac').find('tbody').prepend("<tr class='ligne_transac' id='"+transaction.id+"'>"+
 		"<td class='date' data-date='"+transaction.date_transaction+"'>"+format_date(transaction.date_transaction)+"</td>"+
 		"<td class='edit_transac lien'><img class='edit_transac_icon' src='./img/file_edit.png' width='16px' height='16px' title='Modifier la transaction "+transaction.id+"'/></td>"+
 		"<td class='libelle' title=\""+transaction.libelle+"\">"+transaction.libelle+"</td>"+

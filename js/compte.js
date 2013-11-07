@@ -121,7 +121,11 @@ function get_compte(id){
 }		
 
 function update_compte_data(compte){
+	//par defaut le compte mis à jour ne peut etre que le compte actif
+	compte.id = $('.actif').data('id');
+	
 	console.log("Mise à jour des données du compte " + compte.id);
+	console.log(compte);
 	
 	if(compte.cle != null) location.hash = compte.cle;
 	
