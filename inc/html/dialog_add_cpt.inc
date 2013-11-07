@@ -82,7 +82,7 @@
 							}
 						});	
 					},
-					"<?php echo _("Cancel"); ?>Annuler": function() {
+					"<?php echo _("Cancel"); ?>": function() {
 						$( this ).dialog( "close" );
 					}
 				},
