@@ -16,9 +16,12 @@ class Compte {
 	public $ordre;
 	public $cloture;
 	public $is_synthese = false;
+	public $id_compte_rattachement = false;
 	public $created;
 	public $modified;
 
+	public $compte_rattache = array();		//Compte Class Array
+	public $compte_rattachement;		//Compte Class
 	public $type;		//TypeCompte Class
 	public $titulaire; // User Class
 	
@@ -74,7 +77,8 @@ class Compte {
 			$this->ordre = $result['ordre'];
 			$this->cloture = ($result['cloture'] == 1);
     		$this->is_synthese = ($result['is_synthese'] == 1);
-    		$this->created = $result['created'];
+    		$this->id_compte_rattachement = $result['id_compte_rattachement'];
+			$this->created = $result['created'];
     		$this->modified = $result['modified'];
     		
 			$this->nb_transactions = $result['nb_transactions'];
@@ -100,10 +104,11 @@ class Compte {
 		$id_titulaire = $this->id_titulaire;
 		$id_type = $this->id_type;
 		$no_compte = $this->no_compte;
+		$id_compte_rattachement = $this->id_compte_rattachement;
 		$solde_ouverture = $this->solde_ouverture;
 		$is_synthese = ($this->is_synthese)?1:0;
 		
-		$q = "INSERT INTO ".db_table_name('comptes')." (cle, libelle, libelle_long, etablissement, url_acces, id_titulaire, id_type, no_compte, solde_ouverture, solde_courant, is_synthese, created, modified, id_utilisateur) VALUES ('$cle', '$libelle', '$libelle_long', '$etablissement', '$url_acces', '$id_titulaire', '$id_type', '$no_compte', '$solde_ouverture', '$solde_ouverture', '$is_synthese', NOW(), NOW(), '".$_SESSION["user_id"]."')";
+		$q = "INSERT INTO ".db_table_name('comptes')." (cle, libelle, libelle_long, etablissement, url_acces, id_titulaire, id_type, no_compte, solde_ouverture, solde_courant, is_synthese, id_compte_rattachement, created, modified, id_utilisateur) VALUES ('$cle', '$libelle', '$libelle_long', '$etablissement', '$url_acces', '$id_titulaire', '$id_type', '$no_compte', '$solde_ouverture', '$solde_ouverture', '$is_synthese', '$id_compte_rattachement', NOW(), NOW(), '".$_SESSION["user_id"]."')";
 		
 		$res = mysql_query($q);
 		if (!$res) {
@@ -133,11 +138,11 @@ class Compte {
 		$solde_ouverture = $this->solde_ouverture;
 		$cloture = $this->cloture;
 		$is_synthese = ($this->is_synthese)?1:0;
+		$id_compte_rattachement = $this->id_compte_rattachement;
 		
 		
 		
-		
-		$q = "UPDATE ".db_table_name('comptes')." SET cle = '$cle', libelle = '$libelle', libelle_long = '$libelle_long', etablissement = '$etablissement', url_acces = '$url_acces', id_type = '$id_type', no_compte = '$no_compte', solde_ouverture = $solde_ouverture, cloture = '$cloture', is_synthese = '$is_synthese', modified = NOW() WHERE id = '$this->id' AND id_utilisateur = '".$_SESSION["user_id"]."'";
+		$q = "UPDATE ".db_table_name('comptes')." SET cle = '$cle', libelle = '$libelle', libelle_long = '$libelle_long', etablissement = '$etablissement', url_acces = '$url_acces', id_type = '$id_type', no_compte = '$no_compte', solde_ouverture = $solde_ouverture, cloture = '$cloture', is_synthese = '$is_synthese', id_compte_rattachement = '$id_compte_rattachement', modified = NOW() WHERE id = '$this->id' AND id_utilisateur = '".$_SESSION["user_id"]."'";
 		
 		$res = mysql_query($q);
 		if (!$res) {
@@ -287,7 +292,38 @@ class Compte {
 		return $this->type;
 		
 	}
-
+	
+	public function getCompteRattachement(){
+		
+		if(!isset($this->compte_rattachement) || $this->compte_rattachement->id != $this->id_compte_rattachement) $this->type = new Compte($this->compte_rattachement);
+		return $this->compte_rattachement;
+		
+	}
+	
+	public function getCompteRattache(){
+		
+		if(count($this->compte_rattache) == 0){
+			$q = "SELECT id FROM ".db_table_name('comptes')." WHERE id_compte_rattachement = $this->id AND id_utilisateur = ".$_SESSION["user_id"]."";
+			$res = mysql_query($q);
+	
+	    	if (!$res) {
+	    		throw new MyException('Invalid query: ' . mysql_error());
+			}
+			
+	    	while($result = mysql_fetch_assoc($res)){
+    		
+				$c = new Compte($result["id"]);
+				$this->compte_rattache[] = $c;
+				
+			
+			}
+		}
+		return $this->compte_rattache;
+		
+	}
+	
+	
+	
 	public function getNbTransactions($date = ""){
 		
 		if($date != ""){
@@ -309,7 +345,7 @@ class Compte {
 		
 	}
 	
-	public function getSolde($date_fin = ""){
+	public function getSolde($date_fin = "", $solde_cpt_rattache = false){
 		
 		if($this->getNbTransactions($date_fin) == 0) {
 			return $this->solde_ouverture;
@@ -336,6 +372,17 @@ class Compte {
 			$solde = $this->solde_ouverture + $result2['solde'];
 		}else{
 			return false;
+		}
+		
+		if($solde_cpt_rattache){
+			$cpt_rattaches = $this->getCompteRattache();
+			if(count($cpt_rattaches)>0){
+				$solde_rattache = 0;
+				foreach($cpt_rattaches as $c){
+					$solde_rattache += $c->getSolde($date_fin, true);
+				}
+				$solde += $solde_rattache;
+			}
 		}
 		
 		return ($solde);

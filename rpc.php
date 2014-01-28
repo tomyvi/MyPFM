@@ -364,6 +364,7 @@ if($_GET){
 				$c->solde_ouverture = $_GET['solde_ouverture'];
 				$c->cloture = $_GET['cloture'];
 				$c->is_synthese = $_GET['is_synthese'];		
+				$c->id_compte_rattachement = $_GET['id_compte_rattachement'];		
 				
 				if($response['nouveau_solde']) $c->actualiserSolde();
 			
@@ -392,7 +393,10 @@ if($_GET){
 				$c->no_compte = $_GET['no_compte'];
 				$c->solde_ouverture = $_GET['solde_ouverture'];
 				$c->is_synthese = $_GET['is_synthese'];		
-			
+				$c->id_compte_rattachement = $_GET['id_compte_rattachement'];		
+				
+				
+				
 				$c->ajouter();
 				$c->getType();
 				$response['status'] = true;

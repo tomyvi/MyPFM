@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MyPFM\n"
-"POT-Creation-Date: 2013-11-07 18:04+0100\n"
-"PO-Revision-Date: 2013-11-07 18:04+0100\n"
+"POT-Creation-Date: 2014-01-28 15:49+0100\n"
+"PO-Revision-Date: 2014-01-28 15:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
-"X-Poedit-Basepath: C:\\Users\\Thomas\\Documents\\GitHub\\MyPFM\n"
+"X-Poedit-Basepath: C:\\Users\\Thomas\\Documents\\99 - Perso\\GitHub\\MyPFM\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -53,7 +53,7 @@ msgstr "Balance à J-30"
 msgid "Estimated future balance"
 msgstr "Solde futur"
 
-#: dashboard.php:285 display.php:34
+#: dashboard.php:285 display.php:34 inc/html/account_details2.inc:7
 msgid "Balance on"
 msgstr "Solde au"
 
@@ -65,22 +65,23 @@ msgstr "Atterrissage M+1"
 msgid "Loading your accounts, please wait"
 msgstr "Chargement de vos comptes, veuillez patienter"
 
-#: display.php:39 report_budgets.php:158
+#: display.php:39 report_budgets.php:158 inc/html/account_details2.inc:12
 msgid "Edit"
 msgstr "Modifier"
 
-#: display.php:47
+#: display.php:47 inc/html/account_details2.inc:20
 msgid "Import"
 msgstr "Importer"
 
 #: display.php:48 inc/html/dialog_add_budget.inc:73
-#: inc/html/dialog_add_cpt.inc:85 inc/html/dialog_add_transac.inc:109
-#: inc/html/dialog_edit_budget.inc:123 inc/html/dialog_edit_cpt.inc:158
+#: inc/html/dialog_add_cpt.inc:87 inc/html/dialog_add_transac.inc:109
+#: inc/html/dialog_edit_budget.inc:123 inc/html/dialog_edit_cpt.inc:162
 #: inc/html/dialog_edit_transac.inc:149 inc/html/dialog_import_transac.inc:243
+#: inc/html/dialog_import_transac2.inc:243
 msgid "Cancel"
 msgstr "Annuler"
 
-#: display.php:49
+#: display.php:49 inc/html/account_details2.inc:20
 msgid "Last import on"
 msgstr "Dernier import le"
 
@@ -96,8 +97,8 @@ msgid "Date"
 msgstr "Date"
 
 #: display.php:63 report_budgets.php:134 report_graphs.php:695
-#: inc/html/dialog_add_cpt.inc:110 inc/html/dialog_add_transac.inc:140
-#: inc/html/dialog_edit_cpt.inc:184 inc/html/dialog_edit_transac.inc:181
+#: inc/html/dialog_add_cpt.inc:127 inc/html/dialog_add_transac.inc:140
+#: inc/html/dialog_edit_cpt.inc:202 inc/html/dialog_edit_transac.inc:181
 #: inc/html/dialog_handle_duplicates.inc:176
 #: inc/html/dialog_handle_duplicates.inc:196
 msgid "Label"
@@ -241,7 +242,7 @@ msgstr "Comptes"
 msgid "accounts"
 msgstr "comptes"
 
-#: report_graphs.php:71 inc/html/header.inc:69
+#: report_graphs.php:71 inc/html/header.inc:71 inc/html/nav_bar.inc:40
 msgid "Categories"
 msgstr "Catégories"
 
@@ -301,6 +302,46 @@ msgstr "Compte"
 msgid "Loading transactions"
 msgstr "Chargement des transactions"
 
+#: css/offline-theme-slide.css.php:38
+msgid "Your computer is connected to the internet."
+msgstr "Votre ordinateur est connecté à Internet."
+
+#: css/offline-theme-slide.css.php:43
+msgid "Your device is connected to the internet."
+msgstr "Votre appareil est connecté à Internet."
+
+#: css/offline-theme-slide.css.php:49
+msgid "Your device is connected."
+msgstr "Votre appareil est connecté."
+
+#: css/offline-theme-slide.css.php:62
+msgid "Your computer lost its internet connection."
+msgstr "Votre ordination a perdu la connexion à Internet."
+
+#: css/offline-theme-slide.css.php:67
+msgid "Your device lost its internet connection."
+msgstr "Votre appareil a perdu la connexion à Internet."
+
+#: css/offline-theme-slide.css.php:73
+msgid "Your device isn't connected."
+msgstr "Votre appareil n'est pas connecté."
+
+#: css/offline-theme-slide.css.php:78
+msgid "Attempting to reconnect..."
+msgstr "Tentative de reconnexion..."
+
+#: css/offline-theme-slide.css.php:86
+msgid "Attempting to reconnect in"
+msgstr "Tentative de reconnexion dans"
+
+#: css/offline-theme-slide.css.php:91
+msgid "Connecting in"
+msgstr "Connexion dans"
+
+#: css/offline-theme-slide.css.php:100
+msgid "Connection attempt failed."
+msgstr "La tentative de connexion a échoué."
+
 #: inc/init.inc.php:26
 msgid "Could not connect"
 msgstr "Impossible de se connecter"
@@ -309,7 +350,7 @@ msgstr "Impossible de se connecter"
 msgid "Error during account sort order request"
 msgstr "Erreur lors de la mise à jour de l\\'ordre des comptes"
 
-#: inc/html/account_list.inc:57
+#: inc/html/account_list.inc:57 inc/html/account_list2.inc:21
 msgid "Show closed accounts"
 msgstr "Afficher les comptes clots"
 
@@ -330,7 +371,8 @@ msgstr "Veuillez saisir un nom pour le budget"
 msgid "Error while creating budget"
 msgstr "Erreur lors de la création du budget"
 
-#: inc/html/dialog_add_budget.inc:87 inc/html/header.inc:56
+#: inc/html/dialog_add_budget.inc:87 inc/html/header.inc:58
+#: inc/html/nav_bar.inc:30
 msgid "Add new budget"
 msgstr "Créer un nouveau budget"
 
@@ -350,53 +392,57 @@ msgstr "Actif"
 msgid "Display in statistics"
 msgstr "Afficher dans les statistiques"
 
-#: inc/html/dialog_add_budget.inc:107 inc/html/dialog_add_cpt.inc:153
+#: inc/html/dialog_add_budget.inc:107 inc/html/dialog_add_cpt.inc:181
 #: inc/html/dialog_add_transac.inc:190 inc/html/dialog_edit_budget.inc:159
-#: inc/html/dialog_edit_cpt.inc:231 inc/html/dialog_edit_transac.inc:244
+#: inc/html/dialog_edit_cpt.inc:263 inc/html/dialog_edit_transac.inc:244
 msgid "Loading in progress"
 msgstr "Chargement"
 
-#: inc/html/dialog_add_cpt.inc:43 inc/html/dialog_edit_cpt.inc:64
+#: inc/html/dialog_add_cpt.inc:45 inc/html/dialog_edit_cpt.inc:68
 msgid "Please fill in an account name"
 msgstr "Veuillez saisir un nom pour le compte"
 
-#: inc/html/dialog_add_cpt.inc:80
+#: inc/html/dialog_add_cpt.inc:82
 msgid "Error when creating account"
 msgstr "Erreur lors de la création du compte"
 
-#: inc/html/dialog_add_cpt.inc:104
+#: inc/html/dialog_add_cpt.inc:108
 msgid "Add account"
 msgstr "Ajouter un compte"
 
-#: inc/html/dialog_add_cpt.inc:108 inc/html/dialog_edit_cpt.inc:182
+#: inc/html/dialog_add_cpt.inc:125 inc/html/dialog_edit_cpt.inc:200
 msgid "Please fill in account details"
 msgstr "Veuillez saisir les informations pour le compte"
 
-#: inc/html/dialog_add_cpt.inc:114 inc/html/dialog_edit_cpt.inc:188
+#: inc/html/dialog_add_cpt.inc:131 inc/html/dialog_edit_cpt.inc:206
 msgid "Detailed label"
 msgstr "Libellé long"
 
-#: inc/html/dialog_add_cpt.inc:118 inc/html/dialog_edit_cpt.inc:192
+#: inc/html/dialog_add_cpt.inc:135 inc/html/dialog_edit_cpt.inc:210
 msgid "Bank"
 msgstr "Banque"
 
-#: inc/html/dialog_add_cpt.inc:122 inc/html/dialog_edit_cpt.inc:196
+#: inc/html/dialog_add_cpt.inc:139 inc/html/dialog_edit_cpt.inc:214
 msgid "URL"
 msgstr "URL"
 
-#: inc/html/dialog_add_cpt.inc:126 inc/html/dialog_edit_cpt.inc:200
+#: inc/html/dialog_add_cpt.inc:143 inc/html/dialog_edit_cpt.inc:218
 msgid "Account type"
 msgstr "Type de compte"
 
-#: inc/html/dialog_add_cpt.inc:142 inc/html/dialog_edit_cpt.inc:216
+#: inc/html/dialog_add_cpt.inc:158 inc/html/dialog_edit_cpt.inc:234
+msgid "Connecting account"
+msgstr "Compte de rattachement"
+
+#: inc/html/dialog_add_cpt.inc:170 inc/html/dialog_edit_cpt.inc:248
 msgid "Account number"
 msgstr "N° de compte"
 
-#: inc/html/dialog_add_cpt.inc:146 inc/html/dialog_edit_cpt.inc:220
+#: inc/html/dialog_add_cpt.inc:174 inc/html/dialog_edit_cpt.inc:252
 msgid "Opening balance"
 msgstr "Solde d'ouverture"
 
-#: inc/html/dialog_add_cpt.inc:150 inc/html/dialog_edit_cpt.inc:228
+#: inc/html/dialog_add_cpt.inc:178 inc/html/dialog_edit_cpt.inc:260
 msgid "Display in dashboard"
 msgstr "Afficher dans la synthèse"
 
@@ -438,7 +484,7 @@ msgstr "facultatif"
 msgid "Budget"
 msgstr "Budget"
 
-#: inc/html/dialog_edit_budget.inc:49 inc/html/dialog_edit_cpt.inc:45
+#: inc/html/dialog_edit_budget.inc:49 inc/html/dialog_edit_cpt.inc:48
 #: inc/html/dialog_edit_transac.inc:55
 msgid "Save"
 msgstr "Enregistrer"
@@ -447,7 +493,8 @@ msgstr "Enregistrer"
 msgid "Error while updating budget"
 msgstr "Erreur lors de la modification du budget"
 
-#: inc/html/dialog_edit_budget.inc:94 inc/html/dialog_edit_transac.inc:116
+#: inc/html/dialog_edit_budget.inc:94 inc/html/dialog_edit_cpt.inc:124
+#: inc/html/dialog_edit_transac.inc:116
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -467,15 +514,15 @@ msgstr "Modifier un budget"
 msgid "Please fill in budget details"
 msgstr "Veuillez saisir les informations pour le budget"
 
-#: inc/html/dialog_edit_cpt.inc:106
+#: inc/html/dialog_edit_cpt.inc:110
 msgid "The account"
 msgstr "Le compte"
 
-#: inc/html/dialog_edit_cpt.inc:106
+#: inc/html/dialog_edit_cpt.inc:110
 msgid "has been updated"
 msgstr "a bien été mis à jour"
 
-#: inc/html/dialog_edit_cpt.inc:122
+#: inc/html/dialog_edit_cpt.inc:126
 msgid ""
 "Do you really want to delete this account ?\\n(All transactions will be "
 "erased)"
@@ -483,15 +530,15 @@ msgstr ""
 "Etes vous sûr de vouloir supprimer ce compte ?\\n(Toutes les transactions "
 "pour ce compte seront également supprimées)"
 
-#: inc/html/dialog_edit_cpt.inc:141
+#: inc/html/dialog_edit_cpt.inc:145
 msgid "The account has been deleted"
 msgstr "Le compte a bien été supprimé"
 
-#: inc/html/dialog_edit_cpt.inc:178
+#: inc/html/dialog_edit_cpt.inc:185
 msgid "Edit account"
 msgstr "Editer le compte"
 
-#: inc/html/dialog_edit_cpt.inc:224
+#: inc/html/dialog_edit_cpt.inc:256
 msgid "Closed"
 msgstr "Compte clot"
 
@@ -561,39 +608,49 @@ msgid "Existing transactions list"
 msgstr "Liste des transactions existantes"
 
 #: inc/html/dialog_import_transac.inc:63
+#: inc/html/dialog_import_transac2.inc:63
 msgid "Operation canceled"
 msgstr "Opération annulée"
 
 #: inc/html/dialog_import_transac.inc:74
+#: inc/html/dialog_import_transac2.inc:74
 msgid "Uploading file"
 msgstr "Envoi du fichier"
 
 #: inc/html/dialog_import_transac.inc:99
+#: inc/html/dialog_import_transac2.inc:99
 msgid "Processing file"
 msgstr "Traitement du fichier"
 
 #: inc/html/dialog_import_transac.inc:118
+#: inc/html/dialog_import_transac2.inc:118
 msgid "transactions(s) have been imported"
 msgstr "transaction(s) ont été importées "
 
 #: inc/html/dialog_import_transac.inc:122
+#: inc/html/dialog_import_transac2.inc:122
 msgid "Processing duplicated"
 msgstr "Traitement des doublons"
 
 #: inc/html/dialog_import_transac.inc:145
 #: inc/html/dialog_import_transac.inc:148
+#: inc/html/dialog_import_transac2.inc:145
+#: inc/html/dialog_import_transac2.inc:148
 msgid "transaction(s) already exist, impossible to duplicate them"
 msgstr "transaction(s) existent déjà, impossible de les dupliquer"
 
 #: inc/html/dialog_import_transac.inc:206
+#: inc/html/dialog_import_transac2.inc:206
 msgid "Import has successfully been canceled"
 msgstr "L\\'import a bien été annulé"
 
 #: inc/html/dialog_import_transac.inc:206
+#: inc/html/dialog_import_transac2.inc:206
 msgid "transaction(s) deleted"
 msgstr "transaction(s) supprimée(s)"
 
 #: inc/html/dialog_import_transac.inc:227
+#: inc/html/dialog_import_transac2.inc:227
 msgid "Transaction import"
 msgstr "Import de transactions"
 
@@ -610,78 +667,112 @@ msgstr ""
 msgid "Stay logged in"
 msgstr "Rester connecté"
 
-#: inc/html/header.inc:4
+#: inc/html/header.inc:4 inc/html/index.inc:191 inc/html/login2.inc:11
+#: inc/html/nav_bar.inc:10
 msgid "My Personal Finance Manager"
 msgstr "Mes Comptes"
 
-#: inc/html/header.inc:35
+#: inc/html/header.inc:37 inc/html/nav_bar.inc:16
 msgid "Home"
 msgstr "Accueil"
 
-#: inc/html/header.inc:38
+#: inc/html/header.inc:40 inc/html/nav_bar.inc:17
 msgid "Dashboard"
 msgstr "Synthèse"
 
-#: inc/html/header.inc:41 inc/html/header.inc:68
+#: inc/html/header.inc:43 inc/html/header.inc:70 inc/html/nav_bar.inc:19
+#: inc/html/nav_bar.inc:39
 msgid "Expenses & Incomes"
 msgstr "Dépenses & Revenus"
 
-#: inc/html/header.inc:43
+#: inc/html/header.inc:45 inc/html/nav_bar.inc:21
 msgid "Account list"
 msgstr "Liste des comptes"
 
-#: inc/html/header.inc:44
+#: inc/html/header.inc:46 inc/html/nav_bar.inc:22
 msgid "Add new account"
 msgstr "Ajouter un compte"
 
-#: inc/html/header.inc:47
+#: inc/html/header.inc:49 inc/html/nav_bar.inc:24
 msgid "Add new transaction"
 msgstr "Ajouter une transaction"
 
-#: inc/html/header.inc:54
+#: inc/html/header.inc:56 inc/html/nav_bar.inc:28
 msgid "Categories & Budgets"
 msgstr "Catégories & Budgets"
 
-#: inc/html/header.inc:57
+#: inc/html/header.inc:59 inc/html/nav_bar.inc:31
 msgid "Add new category"
 msgstr "Ajouter une catégorie"
 
-#: inc/html/header.inc:60
+#: inc/html/header.inc:62 inc/html/nav_bar.inc:33
 msgid "Apply categories"
 msgstr "Appliquer les catégories"
 
-#: inc/html/header.inc:66
+#: inc/html/header.inc:68 inc/html/nav_bar.inc:37
 msgid "Reports"
 msgstr "Rapports"
 
-#: inc/html/header.inc:70
+#: inc/html/header.inc:72 inc/html/nav_bar.inc:41
 msgid "Budgets"
 msgstr "Budgets"
 
-#: inc/html/header.inc:73
+#: inc/html/header.inc:75 inc/html/nav_bar.inc:58
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: inc/html/header.inc:75
+#: inc/html/header.inc:77
 msgid "Amount, category or label,..."
 msgstr "Montant, catégorie ou libellé,..."
 
-#: inc/html/login.inc:7
+#: inc/html/index.inc:186 inc/html/nav_bar.inc:5
+msgid "Toggle navigation"
+msgstr "Afficher/masquer le menu"
+
+#: inc/html/index.inc:304
+msgid "Back to top"
+msgstr "Haut"
+
+#: inc/html/index.inc:305
+msgid "Privacy"
+msgstr "Vie privée"
+
+#: inc/html/index.inc:305
+msgid "Terms"
+msgstr "Mentions légales"
+
+#: inc/html/index.inc:305
+msgid "Credits"
+msgstr "Remerciements"
+
+#: inc/html/login.inc:7 inc/html/login2.inc:78
 msgid "Please fill in your login"
 msgstr "Veuillez saisir votre nom d\\'utilisateur"
 
-#: inc/html/login.inc:13
+#: inc/html/login.inc:13 inc/html/login2.inc:84
 msgid "Please fill in your password"
 msgstr "Veuillez saisir votre mot de passe"
 
-#: inc/html/login.inc:56
+#: inc/html/login.inc:56 inc/html/login2.inc:126
 msgid "Login"
 msgstr "Nom d'utilisateur"
 
-#: inc/html/login.inc:60
+#: inc/html/login.inc:60 inc/html/login2.inc:127
 msgid "Password"
 msgstr "Mot de passe"
 
-#: inc/html/login.inc:71
+#: inc/html/login.inc:71 inc/html/login2.inc:131
 msgid "Log in"
 msgstr "Se connecter"
+
+#: inc/html/login2.inc:125
+msgid "Please sign in"
+msgstr "Veuillez vous authentifier"
+
+#: inc/html/login2.inc:129
+msgid "Remember me"
+msgstr "Se souvenir de moi"
+
+#: inc/html/nav_bar.inc:56
+msgid "Profile"
+msgstr "Profil"

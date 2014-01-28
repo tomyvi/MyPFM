@@ -37,6 +37,8 @@
 						t_cpt_is_synthese = 0;
 						if($('#t_add_cpt_is_synthese').attr('checked')) t_cpt_is_synthese = 1;
 						
+						t_cpt_cpt_ratt = $('#t_add_cpt_cpt_ratt').val();
+						
 						//verification des données
 						error = false;
 						if(t_cpt_lib == ""){
@@ -53,7 +55,7 @@
 						}
 						
 						$.ajax({
-							url: 'rpc.php?type=ADD_CPT&cle='+t_cpt_cle+'&&libelle='+t_cpt_lib+'&libelle_long='+t_cpt_liblong+'&etablissement='+t_cpt_etab+'&url_acces='+t_cpt_url+'&id_type='+t_cpt_id_type+'&no_compte='+t_cpt_no+'&solde_ouverture='+t_cpt_soldeouv+'&is_synthese='+t_cpt_is_synthese,
+							url: 'rpc.php?type=ADD_CPT&cle='+t_cpt_cle+'&&libelle='+t_cpt_lib+'&libelle_long='+t_cpt_liblong+'&etablissement='+t_cpt_etab+'&url_acces='+t_cpt_url+'&id_type='+t_cpt_id_type+'&no_compte='+t_cpt_no+'&solde_ouverture='+t_cpt_soldeouv+'&is_synthese='+t_cpt_is_synthese+'&id_compte_rattachement='+t_cpt_cpt_ratt,
 							contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 							context: $(this),
 							scriptCharset: "UTF-8",
@@ -96,6 +98,8 @@
 					$('#t_add_cpt_no').val('');
 					$('#t_add_cpt_soldeouv').val('');
 					$('#t_add_cpt_is_synthese').attr('checked',false);
+					$('#compte_rattachement').hide();
+					$('#t_add_cpt_cpt_ratt').val('');
 				}		
 			});
 			
@@ -103,6 +107,19 @@
 	</script>
 	<div id="dialog-add-cpt" title="<?php echo _("Add account"); ?>" class="dialog">
 
+		<script>
+			$(document).ready(function(){
+				$('#t_add_compte_rattachement').hide();
+				$('#t_add_cpt_id_type').change(function(){
+					if($(this).attr('value') == '<? echo TypeCompte::CARD_TYPE; ?>'){
+						$('#t_add_compte_rattachement').show();
+					}else{
+						$('#t_add_compte_rattachement').hide();
+						$('#t_add_cpt_cpt_ratt').val('');
+					}
+				});
+			});
+		</script>
 		<form>
 			<input type="hidden" id="t_add_cpt_id" value="" />
 			<p><?php echo _("Please fill in account details"); ?> :</p>
@@ -129,13 +146,24 @@
 					<?php
 						foreach(TypeCompte::getListe() as $type_compte){
 							
-							echo "<option value='".$type_compte->id."'>".htmlentities($type_compte->libelle_long)."</option>\n";
+							if($compte->id_type == TypeCompte::CURRENT_TYPE) echo "<option value='".$type_compte->id."'>".htmlentities($type_compte->libelle_long)."</option>\n";
 							
 						}
 						
 					?>
 					</select>
-					
+				</div>
+			</div>
+			<div class="diag_ligne" id="t_add_compte_rattachement">
+				<div class="diag_libelle align_droite"><label for="t_add_cpt_cpt_ratt"><?php echo _("Connecting account"); ?> :</label></div>
+				<div class="diag_champ">
+					<select  name="t_add_cpt_cpt_ratt" id="t_add_cpt_cpt_ratt">
+					<?php
+						foreach(Compte::getListe() as $compte){							
+							echo "<option value='".$compte->id."'>".htmlentities($compte->libelle_long)."</option>\n";
+						}						
+					?>
+					</select>
 				</div>
 			</div>
 			<div class="diag_ligne">

@@ -25,10 +25,13 @@
 						$('#t_edit_cpt_no').val(compte.no_compte);
 						$('#t_edit_cpt_soldeouv').val(number_format(compte.solde_ouverture));
 						
+						$('#t_edit_cpt_cpt_ratt').val(compte.id_compte_rattachement);
 						$('#t_edit_cpt_cloture').attr('checked',(compte.cloture == 1));
 						$('#t_edit_cpt_is_synthese').attr('checked',(compte.is_synthese == 1));
 						
 						$('input:text').setMask();
+						
+						if(compte.id_compte_rattachement > 0) $('#compte_rattachement').show();
 						
 					}
 				});
@@ -52,6 +55,7 @@
 						t_cpt_id_type = ($('#t_edit_cpt_id_type').val());
 						t_cpt_lib_type = ($('#t_edit_cpt_id_type :selected').text());
 						t_cpt_no = $('#t_edit_cpt_no').val();
+						t_cpt_cpt_ratt = $('#t_edit_cpt_cpt_ratt').val();
 						t_cpt_soldeouv = $('#t_edit_cpt_soldeouv').val().replace(',','.').replace(' ','');
 						t_cpt_cloture = 0;
 						if($('#t_edit_cpt_cloture').attr('checked')) t_cpt_cloture = 1;
@@ -91,7 +95,7 @@
 						}	
 						
 						$.ajax({
-							url: 'rpc.php?type=UPDATE_CPT&id_cpt='+t_cpt_id+'&libelle='+t_cpt_lib+'&libelle_long='+t_cpt_liblong+'&etablissement='+t_cpt_etab+'&url_acces='+t_cpt_url+'&id_type='+t_cpt_id_type+'&no_compte='+t_cpt_no+'&solde_ouverture='+t_cpt_soldeouv+'&cloture='+t_cpt_cloture+'&is_synthese='+t_cpt_is_synthese,
+							url: 'rpc.php?type=UPDATE_CPT&id_cpt='+t_cpt_id+'&libelle='+t_cpt_lib+'&libelle_long='+t_cpt_liblong+'&etablissement='+t_cpt_etab+'&url_acces='+t_cpt_url+'&id_type='+t_cpt_id_type+'&no_compte='+t_cpt_no+'&solde_ouverture='+t_cpt_soldeouv+'&cloture='+t_cpt_cloture+'&id_compte_rattachement='+t_cpt_cpt_ratt+'&is_synthese='+t_cpt_is_synthese,
 							contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 							context: $(this),
 							scriptCharset: "UTF-8",
@@ -117,7 +121,7 @@
 							}
 						});	
 					},
-					"Supprimer": function() {
+					"<?php echo _("Delete"); ?>": function() {
 						
 						if(confirm("<?php echo _("Do you really want to delete this account ?\\n(All transactions will be erased)"); ?>")){
 							t_cpt_id = $('#t_edit_cpt_id').val();
@@ -167,16 +171,30 @@
 					$('#t_edit_cpt_url').val('');
 					$('#t_edit_cpt_id_type').val('');
 					$('#t_edit_cpt_no').val('');
+					$('#t_edit_cpt_cpt_ratt').val('');
 					$('#t_edit_cpt_soldeouv').val('');
 					$('#t_edit_cpt_cloture').attr('checked',false);
 					$('#t_edit_cpt_is_synthese').attr('checked',false);
+					$('#compte_rattachement').hide();
+					$('#t_edit_cpt_cpt_ratt').val('');
 				}		
 			});
 			
 		});
 	</script>
 	<div id="dialog-edit-cpt" title="<?php echo _("Edit account"); ?>" class="dialog">
-
+		<script>
+			$(document).ready(function(){
+				$('#t_edit_cpt_id_type').change(function(){
+					if($(this).attr('value') == '<? echo TypeCompte::CARD_TYPE; ?>'){
+						$('#t_edit_compte_rattachement').show();
+					}else{
+						$('#t_edit_compte_rattachement').hide();
+						$('#t_edit_cpt_cpt_ratt').val('');
+					}
+				});
+			});
+		</script>
 		<form>
 			<input type="hidden" id="t_edit_cpt_id" value="" />
 			<p><?php echo _("Please fill in account details"); ?> :</p>
@@ -210,6 +228,20 @@
 					?>
 					</select>
 					
+				</div>
+			</div>
+			<div class="diag_ligne" id="t_edit_compte_rattachement">
+				<div class="diag_libelle align_droite"><label for="t_edit_cpt_cpt_ratt"><?php echo _("Connecting account"); ?> :</label></div>
+				<div class="diag_champ">
+					<select  name="t_edit_cpt_cpt_ratt" id="t_edit_cpt_cpt_ratt">
+					<?php
+						foreach(Compte::getListe() as $compte){
+							
+							if($compte->id_type == TypeCompte::CURRENT_TYPE) echo "<option value='".$compte->id."'>".htmlentities($compte->libelle_long)."</option>\n";
+							
+						}						
+					?>
+					</select>
 				</div>
 			</div>
 			<div class="diag_ligne">
